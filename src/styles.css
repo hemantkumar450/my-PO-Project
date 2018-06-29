@@ -1,0 +1,393 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('./assets/css/theme.css');
+@import url('./assets/css/grid.css');
+@import url('./assets/css/font-awesome.min.css');
+body,input,select,textarea{
+    font-family: 'Roboto', sans-serif;
+}
+.ui-datatable .ui-datatable-data>tr>td{
+    padding: 10px;
+    color: #56555b;
+}
+.ui-datatable thead th, .ui-datatable tfoot td{
+    text-align: left;
+}
+.productTitle{
+    color: #000000;
+}
+.removeIcon{
+    background: #fdd933;
+    padding: 5px;
+    display: inline-block;
+    cursor: pointer;
+}
+.removeIcon i{
+    font-size: 25px;
+    color: #000;
+}
+input[pinputtext],select,textarea{
+    width: 100%;
+    height: 38px;
+    background-color: #ffffff;
+    border: 2px solid #d9d9d9;
+    color: #56555b;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none!important;
+    transition-property:border-color;
+    transition-duration: 1s;
+    
+}
+
+textarea{
+    height: 100px;
+    resize: none;
+}
+input[pinputtext]:hover,select:hover,input[pinputtext]:focus,select:focus{
+border-color: #193783;
+
+}
+.ui-datatable .ui-datatable-thead>tr>th{
+    padding: .6em .5em;
+}
+.btnBlack{
+    background-color: #575759;
+    color: #fff;
+}
+.btnYello{
+    background-color: #fdd933;
+    color: #000;
+}
+
+.btnYellow{
+    background-color: #fdd933;
+    height: 34px;
+    color: #000;
+    width: 118px;
+}
+.btnBlue{
+    background-color: #193783;
+    color: #fff;
+}
+.btn-block{
+    width: 100%;
+}
+a.btn-block{
+    width: 100%!important;
+    padding:15px 10px !important;
+    text-align: center;
+    display: block;
+}
+.btn-round{
+    border-radius: 26px;
+}
+button, a.btn{
+    height: 50px;
+    line-height: 1;
+    text-transform: capitalize;
+    padding: 10px;
+    border:none;
+    outline: none;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    font-size: 18px;
+}
+a.btn:hover{
+    color: #fff;
+    text-decoration: none;
+}
+button:hover,button:focus,a.btn:hover,a.btn:focus{
+    opacity: 0.8;
+    cursor: pointer;
+    transform: scale(1.05);
+    
+}
+.btnRightInline button{
+    margin-left: 15px;
+}
+.btnleftInline button{
+    margin-right: 15px;
+}
+.mt15{
+    margin-top: 15px;
+}
+.mzz15{
+    margin-top: 15px;
+    margin-bottom: 15px
+}
+.mr15{
+
+    margin-right: 15px;
+}
+.ml15{
+    margin-left: 15px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mb15{
+    margin-bottom: 10px;
+}
+.mr10{
+    margin-right: 10px;
+}
+.ml10{
+    margin-left: 10px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.mt30{
+    margin-top: 30px;
+}
+.mr30{
+    margin-right: 30px;
+}
+.ml30{
+    margin-left: 30px;
+}
+.mb30{
+    margin-bottom: 30px;
+}
+.text-center{
+    text-align: center;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.ui-dropdown-label{width: 100%;
+height: 38px;
+background-color: #ffffff;
+border: 1px solid #d9d9d9;
+line-height: 34px;
+color: #56555b;}
+.ui-carousel-page-links {
+    position: absolute;
+    bottom: 20px;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.ui-carousel .ui-carousel-header{
+    height: 0px;
+    padding: 0px;
+    border: none;
+}
+@media (max-width: 767px){
+    .text-right{
+        text-align: left;
+    }
+.ui-carousel .ui-carousel-header{
+            height: auto;
+        }
+.ui-carousel .ui-carousel-mobiledropdown{
+color: #000
+        }        
+    }
+    @media (max-width: 640px){
+        .ui-datatable .ui-datatable-data>tr>td{
+            text-align: left!important;
+        }       
+            }   
+   
+.ui-dropdown{
+    width: 100%!important;
+}
+
+.ui-carousel .fa-circle-o:before {
+    content: "\f111";
+}
+.ui-carousel .fa-dot-circle-o:before {
+    content: "\f111";
+    color: #193783;
+}
+.ui-accordion-toggle-icon{
+    float: right;
+}
+.autoComplete input{
+    width: 100%;
+    height: 38px;
+    background-color: #ffffff;
+    border: 2px solid #d9d9d9;
+    color: #56555b;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none!important;
+    transition-property:border-color;
+    transition-duration: 1s;
+}
+body{
+    position: relative;
+    padding-bottom: 250px;
+}
+@media all and (max-width: 1003px) {
+ 
+    body{
+        position: relative;
+        padding-bottom: 0;
+    }
+}
+
+
+.pd0{
+    padding: 0;
+}
+.addToCart{
+    display: block;
+    width: 100%;
+    background: #56555b;
+    height: 36px;
+    color: #fff;
+    border-radius: 4px;
+    margin: 15px 0;
+    position: relative;
+    transform:scale(1.03)
+}
+
+.addToCart .fa-arrow-right , .addToCart .fa-exchange{
+    position: absolute;
+    right: 0;
+    top:0;
+    background: #fdd933;
+    color: #000;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    padding: 8px 10px;
+    height: 100%;;
+    }
+.fa-asterisk{
+    font-size: 8px;
+    color: red;
+}
+
+.pageTitle{
+    padding: 15px 0;
+    background: #f9f9f9;
+    font-size: 24px;
+    }
+    div /deep/.ui-steps.steps-custom .ui-steps-item .ui-menuitem-link{
+        height: 4px;
+    }   
+    div /deep/.ui-steps.steps-custom .ui-steps-item .ui-steps-title{
+        font-size: 15px;
+    }
+    div /deep/.ui-steps.steps-custom,p-steps{
+      width: 70%;
+      margin-left:auto;
+      margin-right:auto;
+  } 
+  div /deep/.ui-steps.steps-custom .ui-steps-item .ui-steps-number{
+      height: 36px;
+      font-size: 20px;
+      color: #000;
+      line-height: 36px;
+  }
+  div /deep/.ui-steps .ui-steps-item{
+      margin-top: 15px;
+  }
+  div /deep/.ui-steps.steps-custom{
+      margin-bottom: 40px;
+  }
+  .ui-steps.steps-custom .ui-steps-item .ui-menuitem-link{
+    position: relative;
+    top:-17px;
+  }
+  .dashBoardChart  /deep/p-chart,   .dashBoardChart  /deep/p-chart canvas{
+    width: 100%;
+
+}
+div /deep/p-dataviewlayoutoptions{
+    display: none
+}
+
+.btnBlue:hover,.btnBlue:focus{
+    color: #fff;
+}  
+html,body{
+    min-height: 100vh;
+}
+.fa-edit{
+    cursor: pointer;
+}
+
+.hide /deep/.ui-dataview {
+    display: none
+    }
+
+    .fa.ui-radiobutton-icon {
+        display: block;
+        font-size: .5em;
+        line-height: inherit;
+        margin-top: -1px;
+    }
+.ui-chkbox-box.ui-state-active, .ui-radiobutton-box.ui-state-active, div /deep/.ui-widget.ui-calendar-button {
+        border: 1px solid #fdd933;
+        background: #fdd933;
+    }
+div /deep/.ui-widget.ui-calendar-button:focus,
+div /deep/.ui-widget.ui-calendar-button:hover,
+div /deep/.ui-widget.ui-calendar-button:active,.ui-confirmdialog  .ui-widget.ui-button{
+        border: 1px solid #fdd933!important;
+        background: #fdd933!important;
+    }
+    .ui-confirmdialog  .ui-widget.ui-button{
+        color: #000;
+    }
+.ui-datatable .ui-datatable-thead>tr>th,.ui-datatable .ui-datatable-data>tr>td{
+    text-align: center;
+}    
+.img-responsive{
+    display: inline-block;
+}
+.ui-dropdown .ui-dropdown-trigger{
+    padding-top: 8px;
+    color: #000;
+}
+.slide-height{
+    height: auto;
+    background: #fdd933;
+    z-index: 11001;
+    opacity: 1;
+    color: #b1551e;
+}
+.ui-datatable .ui-datatable-thead>tr>th, .ui-datatable .ui-datatable-data>tr>td {
+    word-break: break-word;
+  }
+.container {
+    overflow-x: hidden;
+}
+.container,.container.pd0{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+  a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
+    display: none !important;
+    position: absolute;
+    top: -99999999px;
+  }
+.paginator .ui-paginator-rpp-options{
+    width: 60px;
+    color: #000;
+}
+.ui-autocomplete-panel{
+    z-index: 10000000001!important
+}
+
+.cartViewContainer .ui-dropdown-panel,.statusSuggestion .ui-dropdown-panel{
+    bottom: 42px;
+    top: auto!important;
+}
+
+.globalAutoComplete input{
+    width: auto;
+}
+.globalAutoComplete .ui-autocomplete-dropdown{
+    background: #fdd933!Important;
+    border-color: #fdd933!Important;
+    color: #000!Important;
+    height: 38px;
+}

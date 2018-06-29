@@ -1,0 +1,101 @@
+<h3>Chat #{{chatHeader}}</h3>
+<div class="chatContent">
+  <div style="overflow: hidden; overflow-y: auto; max-height: 400px" *ngIf="isVendor">
+    <div class="Chat" *ngFor="let list of rfqList">
+      <div class="clearfix" *ngIf="!list.isSentByVendor">
+        <div class="col-sm-3 col-md-2 avtar">
+          <img *ngIf="!list.profileAttachmentUrl" src="../../assets/images/chatUser.png">
+          <img *ngIf="list.profileAttachmentUrl" src="{{list.profileAttachmentUrl}}" alt="Avatar">
+
+        </div>
+        <div class="col-sm-9 col-md-10">
+          <h3 class="senderName"> {{list.pduUserName}} </h3>
+        </div>
+        <div class="col-sm-9 col-md-10">
+          <div>
+            {{list.message}}
+          </div>
+          <div style="font-size: 10px;padding-top: 3px;">
+            {{list.creationDate | date : "short"}}
+          </div>
+        </div>
+
+      </div>
+      <div class="clearfix ownerText" *ngIf="list.isSentByVendor">
+
+        <div class="col-sm-9 col-md-10">
+          <h3 class="receiverName">Me</h3>
+          <div>
+            {{list.message}}
+          </div>
+          <div style="font-size: 10px;padding-top: 3px;">
+            {{list.creationDate | date : "short"}}
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-2 avtar">
+          <img src="{{profileUrl}}">
+          <!-- <img *ngIf="list.attachmentUrl" src="{{list.attachmentUrl}}" alt="Avatar"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="overflow: hidden; overflow-y: auto; max-height: 400px" *ngIf="isUser">
+    <div class="Chat" *ngFor="let list of rfqList">
+      <div class="clearfix" *ngIf="list.isSentByVendor">
+        <div class="col-sm-3 col-md-2 avtar">
+          <img *ngIf="!list.profileAttachmentUrl" src="../../assets/images/chatUser.png">
+          <img *ngIf="list.profileAttachmentUrl" src="{{list.profileAttachmentUrl}}" alt="Avatar">
+        </div>
+        <div class="col-sm-9 col-md-10">
+          <h3 class="senderName"> {{list.vendorName}} </h3>
+        </div>
+        <div class="col-sm-9 col-md-10">
+          <div>
+            {{list.message}}
+          </div>
+          <div style="font-size: 10px;padding-top: 3px;">
+            {{list.creationDate | date : "short"}}
+          </div>
+        </div>
+
+      </div>
+      <div class="clearfix ownerText" *ngIf="!list.isSentByVendor">
+
+        <div class="col-sm-9 col-md-10">
+          <h3 class="receiverName">Me</h3>
+          <div>
+            {{list.message}}
+          </div>
+          <div style="font-size: 10px;padding-top: 3px;">
+            {{list.creationDate | date : "short"}}
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-2 avtar">
+          <img src="{{profileUrl}}">
+          <!-- <img *ngIf="list.attachmentUrl" src="{{list.attachmentUrl}}" alt="Avatar"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <div class="col-sm-4 mt15">Message
+      <i class="fa fa-asterisk"></i>
+    </div>
+    <div class="col-sm-8 mt15">
+      <textarea [rows]="5" [cols]="30" [(ngModel)]="vendorMessage" pInputTextarea autoResize="autoResize"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+
+    <div class="col-sm-4">
+      <button class="btnYellow mzz15" type="button" (click)="back()">Back To List</button>
+    </div>
+    <div class="col-sm-2">
+      <button class="btnYellow mzz15" type="button" (click)="saveMessage()">Send</button>
+    </div>
+  </div>
+
+</div>

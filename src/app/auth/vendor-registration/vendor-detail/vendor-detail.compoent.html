@@ -1,0 +1,237 @@
+<h3>Vendor Detail</h3>
+<div class="col-sm-12 vendorDetail" style="border: 1px solid #ccc; margin-bottom: 2px; padding-bottom: 30px">
+
+ <div class="col-sm-offset-1 col-sm-10">
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Company Name
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10 mt15">
+        <input type="text" OnlyAlphabets trim="blur" [disabled]="disabled" maxlength="100" [(ngModel)]="vendorRegisterModel.vendorName" name="name"
+          pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide the full name of the registering organisation."></i>
+    </div>
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Main Office Address (1st Line)
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input [disabled]="disabled" trim="blur" type="text" OnlyAlphaNumericDot maxlength="100" [(ngModel)]="vendorRegisterModel.address1" name="addressOne"
+          pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide the 1st line of your company main office address.
+      "></i>
+    </div>
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Main Office Address (2nd Line)
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input [disabled]="disabled" type="text" OnlyAlphaNumericDot trim="blur" maxlength="100" [(ngModel)]="vendorRegisterModel.address2" name="addressTwo"
+          pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide the 2nd line of your company main office address.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Town / City
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input [disabled]="disabled" type="text" OnlyAlphabets trim="blur" maxlength="50" [(ngModel)]="vendorRegisterModel.city" name="city" pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide the town / city that your company main office is located.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">PO Box / Postal Code
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input [disabled]="disabled" type="text" OnlyAlphaNumeric trim="blur" OnlyDecimalNumber="true" maxlength="6" [(ngModel)]="vendorRegisterModel.zipCode"
+          name="poBox" pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide the PO box / postal code of your company main office address.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Country
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.countryId" placeholder="Select a Country" [options]="countries"
+          filter="true"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Company Website(optional)</div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input type="text" OnlyAlphaNumericDot  trim="blur" [disabled]="disabled" maxlength="30" [(ngModel)]="vendorRegisterModel.webSite" name="website"
+          pInputText>
+      </div>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Company Profile
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <div class="ui-inputgroup" *ngIf="this.vendorRegisterModel.id === 0">
+          <input type="text" OnlyAlphaNumeric [disabled]="disabled" [(ngModel)]="fileCompanyProfile.attachmentName" pInputText placeholder="Select a file">
+          <span class="ui-inputgroup-addon uploadBtnAddon">
+            <input #file class="productUpload" [disabled]="disabled" type="file" (change)="upload($event.target.files , 'CompanyProfile')"
+            />
+            <button class="browseBtn">Browse</button>
+          </span>
+
+        </div>
+        <a *ngIf="roleId === 1 || roleId === 2" target="_blank" href="{{fileCompanyProfile.attachmentName}}">
+          {{fileCompanyProfile.fileName|truncate:50}}
+        </a>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please upload a copy of your company profile."></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Trade Licence / Company Registration / Company Incorporation
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <div class="ui-inputgroup" *ngIf="this.vendorRegisterModel.id === 0">
+          <input type="text" OnlyAlphaNumeric [disabled]="disabled" [(ngModel)]="fileCompanyRegistration.attachmentName" pInputText placeholder="Select a file">
+          <span class="ui-inputgroup-addon uploadBtnAddon">
+            <input #file class="productUpload" [disabled]="disabled" type="file" (change)="upload($event.target.files , 'CompanyLicence')"
+            />
+            <button class="browseBtn">Browse</button>
+          </span>
+
+        </div>
+        <a *ngIf="roleId === 1 || roleId === 2" target="_blank" href="{{fileCompanyRegistration.attachmentName}}">
+          {{fileCompanyRegistration.fileName|truncate:50}}
+        </a>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please upload a valid copy of your company Trade License / Company Registration / Company Incorporation Certificate.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Company Registration Number
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input type="text" OnlyAlphaNumeric [disabled]="disabled" trim="blur" maxlength="50" [(ngModel)]="vendorRegisterModel.companyRegNo" name="CRM"
+          pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide your Company Trade Licence / Company Registration  / Company Incorporation number as it appears on your registered company certificate. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Date of Establishment
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <p-calendar [maxDate]="dateTime" dateFormat="dd.mm.yy" (onBlur)="checkDate(vendorRegisterModel.dateOfEstablishment)" [monthNavigator]="true"
+          [yearNavigator]="true" yearRange="1950:2030" [showIcon]="true" [disabled]="disabled" [(ngModel)]="vendorRegisterModel.dateOfEstablishment"></p-calendar>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please select the date of establishment of your company.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Type of Organisation
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <p-dropdown placeholder="Select a type" [disabled]="disabled" [(ngModel)]="vendorRegisterModel.orgTypeId" [options]="organisationtype"
+          filter="true"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please select the option which shows your organisation type. 
+
+      If none of the options are relevant to your organisation, please select Other."></i>
+    </div>
+
+    <div class="row mt15" *ngIf="vendorRegisterModel.orgTypeId === 6">
+      <div class="col-sm-3 mt15 text-right">If other Organisation , Please Specify</div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input type="text" OnlyAlphaNumeric maxlength="50" trim="blur" [disabled]="disabled" [(ngModel)]="vendorRegisterModel.otherOrganisation" name="CRM"
+          pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="If other, please specify type of organisation.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Are you SME registered company ?
+        <i class="fa fa-asterisk text-right"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.smeRegistered" placeholder="Select a One" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please confirm if you are an SME registered company.
+      "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="vendorRegisterModel.smeRegistered">
+      <div class="col-sm-3 mt15 text-right">If Yes, please upload a valid copy of your SME Registration Certificate
+        <i class="fa fa-asterisk text-right"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <div class="ui-inputgroup" *ngIf="this.vendorRegisterModel.id === 0">
+          <input type="text" OnlyAlphaNumeric [disabled]="disabled" [(ngModel)]="fileSmeCerticate.attachmentName" pInputText placeholder="Select a file">
+          <span class="ui-inputgroup-addon uploadBtnAddon">
+            <input #file [disabled]="disabled" class="productUpload" type="file" (change)="upload($event.target.files , 'SMECertificate')"
+            />
+            <button class="browseBtn">Browse</button>
+          </span>
+
+        </div>
+        <a *ngIf="roleId === 1 || roleId === 2" target="_blank" href="{{fileSmeCerticate.attachmentName}}">
+          {{fileSmeCerticate.fileName|truncate:50}}
+        </a>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please upload a valid copy of your SME Registration Certificate.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Organisation Chart
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <div class="ui-inputgroup" *ngIf="this.vendorRegisterModel.id === 0">
+          <input type="text" OnlyAlphaNumeric [disabled]="disabled" [(ngModel)]="fileOrgChart.attachmentName" pInputText placeholder="Select a file">
+          <span class="ui-inputgroup-addon uploadBtnAddon">
+            <input #file [disabled]="disabled" class="productUpload" type="file" (change)="upload($event.target.files , 'OrganisationChart')"
+            />
+            <button class="browseBtn">Browse</button>
+          </span>
+        </div>
+        <a *ngIf="roleId === 1 || roleId === 2" target="_blank" href="{{fileOrgChart.attachmentName}}">
+          {{fileOrgChart.fileName|truncate:50}}
+        </a>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please upload a one-page organisation chart, illustrating your organisation's ownership structure including your relationship to any parent, subsidiaries or other Group or Holding companies. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">VAT Registration Number
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7 col-xs-10 mt15">
+        <input type="text" OnlyAlphaNumeric trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="vendorRegisterModel.vatRegistrationNo" name="CRM"
+          pInputText>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle toolTip" pTooltip="Please provide your VAT registration number.
+
+      VAT will be introduced in the GCC on 1st January 2018. 
+      Please note, vendors that have not registered and provided there valid VAT number by 1st December 2017 may not be considered further for registration with Emaar."></i>
+    </div>
+  </div>
+</div>

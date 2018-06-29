@@ -1,0 +1,42 @@
+<div class="loginConatiner clearfix">
+  <div class="loginWrapper">
+    <div class="Logo text-center">
+      <img src="../../../../assets/images/layout/logo.png">
+    </div>
+    <div class="LoginContent">
+      <h3>Login Emaar Group </h3>
+      <form (ngSubmit)="onSignIn(myform.valid)" #myform="ngForm">
+
+        <div class="mt15">
+          <input type="text" onkeypress="return AvoidSpace(event)" name="username" maxlength="50" [(ngModel)]="login.userName" pInputText
+            placeholder="User Name" required #userName="ngModel">
+
+          <div [hidden]="userName.pristine && !myform.submitted &&  userName.untouched">
+            <div *ngIf="userName.errors && userName.errors.required" class="text-danger">
+              User Name is required .
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt15">
+          <input type="password" onkeypress="return AvoidSpace(event)" name="password" maxlength="50" [(ngModel)]="login.password"
+            pInputText placeholder="Password" id="password" required #password="ngModel">
+
+          <div [hidden]="password.pristine && !myform.submitted &&  password.untouched">
+            <div *ngIf="password.errors && password.errors.required" class="text-danger">
+              Password is required .
+            </div>
+          </div>
+        </div>
+        <div class="mt15">
+          <button type="submit" class="btn btnBlue  btn-round btn-block">Log In</button>
+        </div>
+      </form>
+      <div class="externalLinks">
+        <a (click)="forgotPassword()" style="cursor: pointer;">Forgot Password?</a>
+        <a (click)="vendorRegistration()" style="cursor: pointer;">Vendor Registration</a>
+      </div>
+    </div>
+  </div>
+</div>

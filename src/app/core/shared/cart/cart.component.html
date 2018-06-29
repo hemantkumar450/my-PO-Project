@@ -1,0 +1,7 @@
+<div class="cartContainer" *ngIf="isPDU">
+  <button class="cart" (click)="openCartList()">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    <span class="itemsCount">{{itemCount}}</span>
+    <span class="countId">Cart: AED {{totalPrice | number:'0.2-5'}}</span>
+  </button>
+</div>

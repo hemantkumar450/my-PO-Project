@@ -1,0 +1,29 @@
+<div>
+  <ul>
+    <li *ngIf="!isPDU">
+      <span>
+        <b>Hello. {{userDetails.firstName}}</b>
+      </span>
+    </li>
+    <li *ngIf="isPDU" style="position: relative;">
+      <a style="cursor:pointer" (click)="redirectOnCompare()">Compare</a>
+      <span class="subBadge" *ngIf="compareCount>0"> {{compareCount}}</span>
+    </li>
+    <li class="myAccountBtn" *ngIf="isPDU">
+      <a (click)="onClickMyAccount()" style="cursor:pointer">My Account</a>
+    </li>
+    <li class="myAccountBtn" *ngIf="isPDU">
+
+      <span *ngIf="userDetails">Hello. {{userDetails.firstName}}</span>
+      <div #myAccountMenuItems class="myAccountMenuItems"> </div>
+    </li>
+    <li>
+      <span (click)="logout()" style="cursor:pointer">
+        <a>Logout</a>
+      </span>
+    </li>
+
+  </ul>
+
+</div>
+<p-menu target="myAccountMenuItems" appendTo="body" #menu popup="popup" [model]="items"></p-menu>

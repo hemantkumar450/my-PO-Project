@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="cartContainer">
+        <h3>Cart</h3>
+        <p-table [value]="cartLists" sortField="brand" sortMode="single" (onSort)="updateRowGroupMetaData()" [scrollable]="true" scrollHeight="600px">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+                        <p-checkbox binary="true" [(ngModel)]="isSelectedAll" (onChange)="selectAllEvent()"></p-checkbox>
+                    </th>
+                    <th>Vendor</th>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Price</th>
+                    <th>Action</th>
+                    <th style="width: 200px">Generate PR/PO</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+                <tr>
+                    <td>
+                        <p-checkbox binary="true" [(ngModel)]="rowData.isDelete"></p-checkbox>
+                    </td>
+                    <td *ngIf="rowGroupMetadata[rowData.vendorName].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.vendorName].size">
+                        {{rowData.vendorName}}
+                    </td>
+                    <td>
+                        <img  style="width: 90%; max-width: 150px;" src="{{rowData.productImageUrl}}">
+                    </td>
+                    <td>{{rowData.productName}}</td>
+                    <td>{{rowData.productPrice | number:'3.2-5'}}</td>
+                    <td>
+                        <input style="text-align: right"  (blur)="quatityKeydownEvent(rowData)" maxlength="8" type="text" OnlyDecimalNumber pInputText [(ngModel)]="rowData.qty">
+                    </td>
+                    <td>{{rowData.totalPrice | number:'3.2-5'}}</td>
+                    <td>
+                        <span class="removeIcon" (click)="deleteCartItem(rowData)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </span>
+                    </td>
+                    <td style="width: 200px" *ngIf="rowGroupMetadata[rowData.vendorName].index === rowIndex" [attr.rowspan]="rowGroupMetadata[rowData.vendorName].size">
+                        <div>
+                            <b>T.Quatity :</b> {{rowGroupMetadata[rowData.vendorName].totalQty| number:'3.2-5'}}
+                        </div>
+                        <div>
+                            <b>T.Price :</b> {{rowGroupMetadata[rowData.vendorName].totalPrice| number:'3.2-5'}}
+                        </div>
+
+                        <button class="btnYello mt15" (click)="onPRGenerate(rowGroupMetadata[rowData.vendorName] , rowData)">
+                            <span *ngIf="rowGroupMetadata[rowData.vendorName].totalPrice>100000"> Generate PR</span>
+                            <span *ngIf="rowGroupMetadata[rowData.vendorName].totalPrice<=100000"> Generate PO</span>
+                        </button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+        <div class="cartControlSeg btnRightInline mb15 mt15 clearfix" *ngIf="cartLists.length>0">
+            <div class="clearfix">
+                <h5 class="pull-right ml15">
+                    <b>Total Quantity:</b> {{totalQty | number:'0.2-5'}}</h5>
+                <h5 class="pull-right ml15">
+                    <b>Total Price:</b> {{totalPrice | number:'3.2-5'}}</h5>
+
+            </div>
+        </div>
+
+        <div class="cartControlSeg btnRightInline mb15 mt15 clearfix">
+            <div class="pull-right" *ngIf="cartLists.length>0">
+                <button class="btnYello mt15" (click)="deleteAllCart()">Delete All</button>
+                <button class="btnYello mt15" (click)="updateCart()">update qty</button>
+                <!-- <button class="btnYello mt15" (click)="onPRGenerate()">Generate PR</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<p-confirmDialog></p-confirmDialog>

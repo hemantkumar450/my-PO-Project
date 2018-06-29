@@ -1,0 +1,236 @@
+.box .col-sm-4,.box .col-sm-12, .box .col-sm-8{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.pdh5{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.box .col-sm-4.pd0,.box .col-sm-12.pd0, .box .col-sm-8.pd0{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.docThumbnail{
+    height: 70px;
+    border:1px solid #ccc;
+}
+.docThumbnail img{
+    max-width: 100%;
+    height: auto;
+}
+
+.editRfq,.questionSec{
+    border: 1px solid #ccc;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+.questionSecHeader{
+    padding: 10px;
+    background: #f5f5f5;
+margin-bottom: 20px;
+} 
+
+.uploadBtnAddon .ui-inputgroup-addon input{
+    width: 115px;
+    height: 40px;
+    opacity: 0;
+    z-index: 11;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+}
+.uploadBtnAddon{
+  overflow: hidden;
+  position: relative;
+}
+.browseBtn{
+width: 115px;
+height: 40px;
+position: absolute;
+    top: 0;
+    right: 0;
+}
+.questionSecBodyEl .ui-inputgroup .ui-inputgroup-addon{
+    padding: 0 15px;
+    height: 39px;
+    display: block;
+}
+.questionSecBodyEl{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+.listedItemsHeader{
+    cursor: pointer;
+    background: #f5f5f5;
+    position: relative
+}
+.listedItemsHeader .fa-plus{
+    position: absolute;
+    right: 10px;
+    top:20px;
+}
+.listedItems.open .listedItemsHeader .fa-plus:before{
+    content: "\f068";
+}
+.listedItems.open .listedItemsHeader{
+background: #c5c0c0;
+}  
+.listedItemsHeader{
+cursor: pointer;
+}
+.questionSecBodyEl /deep/.ui-radiobutton, .questionSecBodyEl /deep/.ui-radiobutton-label{
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+.listedItemsHeader{
+border: 1px solid #ccc;
+padding: 15px;
+}
+.btnYellow{
+    font-size: 13px;
+    height: 38px;
+}
+@media only screen and (max-width: 600px) {
+    .listedItemsHeader .fa-plus{
+ right: 20px;
+ top: 35px;
+    }
+}
+@media only screen and (max-width: 768px) {
+.noMargin{
+    margin-left: 0;
+    margin-right: 0;
+}
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+}
+
+.box {
+    min-height: min-content; /* needs vendor prefixes */
+    border-left: 1px solid #e6dada;
+    width: 100%;
+}
+.column{
+    padding-bottom: 30px;
+    min-width: 300px;
+    height: 65px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+.question {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    overflow: hidden;
+}
+.multiVendorList{
+    border: 1px solid #ccc;
+    padding: 15px 0px 0px;
+}
+.question:first-child,.box .column:first-child{
+    background: #f5f5f5;
+    padding: 12px 10px;
+    height: auto;
+    border: none;
+    height: 50px;
+}
+.multiVendorLineItemsHeader {
+    padding:15px 10px;
+    height: auto;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+.multiVendorList.open .multiVendorLineItemsHeader .fa-plus:before{
+    content: "\f068";
+}
+.multiVendorList.open .multiVendorLineItemsHeader{
+    background: #c5c0c0;
+    }  
+    .multiVendorList .multiVendorLineItemsHeader{
+        margin-bottom: 0;
+    }   
+.question.multiVendorLineItemsHeader{
+ padding-right: 35px;   
+ position: relative;
+}
+.question.multiVendorLineItemsHeader .fa{
+position: absolute;
+right: 5px;
+top: 50%;
+margin-top: -3px;
+   }
+
+   .editRfq /deep/.ui-scrollpanel-content{
+       height: 100%!important;
+   }
+   .thumnailItem {
+    background: #fdd933;
+    padding: 5px;
+    /* border-radius: 6px; */
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+  .chipItem{
+    /* background: #fdd933; */
+    padding: 5px;
+    /* border-radius: 6px; */
+    margin-bottom: 5px;
+    margin-right: 5px;
+  }
+  .vendorChips{
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .chipItem .fa{
+    margin-left: 5px;
+  }
+  .chipItem:hover,.chipItem:focus,.chipItem:active{
+    background: #e0bf29;
+    color: #545151;
+  }
+  .vendorChips{
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .confirmDialog /deep/ .ui-confirmdialog .ui-widget.ui-button{
+    margin-left: 15px;
+    height: auto;
+    color: #000!important;
+  }
+  .h50{
+      height: 50px;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+  }
+  .borderBottomGray{
+border-bottom: 1px solid #ccc;
+  }
+  .h51{
+      height: 51px;
+  }
+  .h65{
+      height: 65px;
+      align-items: center;
+      display: flex;
+  }
+.box .h65.column{
+    height: 65px;
+}
+.questionSecBody{
+    font-size: 13px;
+}
+div.borderBottomGray div:empty
+{
+    display: none
+}

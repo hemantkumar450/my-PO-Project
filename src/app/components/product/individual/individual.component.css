@@ -1,0 +1,124 @@
+.table td{
+    padding: 8px;
+    width: auto;
+}
+.table  {
+    width: 100%;
+}
+.productViewWrapper{
+    margin: 30px 0 50px;
+}
+/deep/.ui-tabview .ui-tabview-panel{
+    border: 1px solid #ccc;
+    border-top: none;
+}
+.productDetail{
+    border:1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;;
+}
+.productTag{
+color: #56555b;
+font-size: 31px;
+padding: 5px 15px;
+text-transform: uppercase;
+border: 1px solid #ccc;
+border-left: none;
+border-right: none;
+margin: 10px -15px;
+}
+.productSummary{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #000;
+}
+.producttype{
+    font-size: 19px;
+    line-height: 1.6;
+}
+.productBigImg img{
+    max-width: 100%;
+    max-height: 250px;
+}
+.productBigImg {
+    text-align: center;
+}
+.addToCart{
+    width: 190px;
+    padding: 10px 25px;
+    margin-top: 5px;
+}
+.controlSec {
+    margin: 20px 0;
+}
+.controlSec button, .controlSec a, .controlSec .addToCart{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.vendordetail{
+    color: #56555b;
+    line-height: 1.6;
+    font-size: 16px;
+}
+.productDetail>.row{
+    display: flex;
+    flex-wrap: wrap;
+} 
+.productDetail::before{
+ content: "";
+ left: 50%;
+ height: 100%;
+ width: 1px;
+ display: block;
+ position: absolute;
+ background: #ccc;
+ top: 0;
+}
+.productDetail{
+    position: relative;
+}
+.sliderthumbnails li{
+    float: left;
+    margin: 10px 10px 0;
+    padding: 10px;
+    border:1px solid #ccc;
+    width: 80px;
+    height: 70px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.sliderthumbnails{
+    margin-top: 30px;
+}
+.sliderthumbnails li img{
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+.overlayPanelWrapper /deep/.ui-overlaypanel{
+    margin-top: 50px;
+    max-width: 600px;
+    height: auto;
+}
+/* .scrollDv{
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 200px;
+} */
+@media (max-width:767px) {
+    .productDetail:before{
+        display: none
+    }
+    .overlayPanelWrapper /deep/.ui-overlaypanel{
+        margin-top: 50px;
+        max-width: 500px;
+        height: auto;
+    }
+}
+@media (max-width:375px) {
+    .overlayPanelWrapper /deep/.ui-overlaypanel{
+        margin-top: 30px;
+        max-width: 300px;
+        height: auto;
+    }}

@@ -1,0 +1,278 @@
+<div class="container mt15">
+    <h3 class="pull-left">Purchase Order</h3>
+        <div class="pull-right mt15">
+            <button class="btnYellow ml15" (click)="onCancel()">Cancel</button>
+            <button class="btnYellow ml15"  *ngIf="purchaseOrderModel.id==0" (click)="onSave()">Save</button>
+        </div>
+    </div>
+<div class="container pd0 mt30 mb15 productOrder">
+    <div class="col-sm-6 col-xs-12 productOrderSeg">
+
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Supplier Name</div>
+            <div class="col-sm-8">
+                {{purchaseOrderModel.vendorName}}
+                <!-- <input type="text" [disabled]="true" pInputText [(ngModel)]="purchaseOrderModel.vendorName" /> -->
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Supplier Number</div>
+            <div class="col-sm-8">
+                {{purchaseOrderModel.vendorNumber}}
+            </div>
+        </div> -->
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Supplier Site</div>
+            <div class="col-sm-8">
+                {{purchaseOrderModel.website}}
+                <!-- <input type="text" [disabled]="true" pInputText [(ngModel)]="purchaseOrderModel.website" /> -->
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Supplier Contact</div>
+            <div class="col-sm-8">
+                {{purchaseOrderModel.mobileNo}}
+                <!-- <input type="text" [disabled]="true" pInputText [(ngModel)]="purchaseOrderModel.mobileNo" /> -->
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Supplier Email</div>
+            <div class="col-sm-8">
+                {{purchaseOrderModel.email}}
+                <!-- <input type="text" [disabled]="true" pInputText [(ngModel)]="purchaseOrderModel.email" /> -->
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Quote Ref
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-8 text-right">
+                <input type="text" maxlength="100" pInputText [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.quoteRef" />
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Buyer Name</div>
+            <div class="col-sm-8">
+                <input type="text" [disabled]="true" pInputText [(ngModel)]="purchaseOrderModel.buyerName" />
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Contact Person
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" maxlength="50" pInputText [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.contactPerson" />
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Standard Contact</div>
+            <div class="col-sm-8">
+                <select>
+                    <option></option>
+                </select>
+            </div>
+        </div> -->
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Budgeted</div>
+            <div class="col-sm-8">
+                <p-radioButton name="Budgeted1" label="Yes" value=true [(ngModel)]="purchaseOrderModel.budgeted"> </p-radioButton>
+                <span style="margin-left: 10%">
+                    <p-radioButton name="Budgeted" label="No" value=false [(ngModel)]="purchaseOrderModel.budgeted"> </p-radioButton>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xs-12 productOrderSeg">
+
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Payment Terms
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <p-dropdown [options]="paymentTerms" [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.paymentTermId" placeholder="select a payment terms"
+                    filter="true"></p-dropdown>
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Term Description
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <input type="text" maxlength="255" pInputText [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.termDescription" />
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Source Type
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <p-dropdown [options]="sourceType" [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.sourceTypeId" placeholder="select a source type"
+                    filter="true"></p-dropdown>
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Ship to Location
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <p-dropdown [options]="shipTOLocation" [(ngModel)]="purchaseOrderModel.shipToLocationId" placeholder="select a ship to location"
+                    filter="true"></p-dropdown>
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Delivery Date
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-8">
+                <p-calendar [minDate]="minDate" [(ngModel)]="purchaseOrderModel.deliveryDate"></p-calendar>
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Contract Start Date</div>
+            <div class="col-sm-8">
+                <p-calendar [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.contractStartDate"></p-calendar>
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Contract End Date</div>
+            <div class="col-sm-8">
+                <p-calendar [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.contractEndDate"></p-calendar>
+            </div>
+        </div> -->
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">PO Date
+                    <i class="fa fa-asterisk"></i>  
+
+            </div>
+            <div class="col-sm-8">
+                <p-calendar [disabled]="true" [(ngModel)]="purchaseOrderModel.poDate"></p-calendar>
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Community Name
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <p-dropdown [options]="communities" [(ngModel)]="purchaseOrderModel.purchaseOrderDetail. " placeholder="select a community name"
+                    filter="true"></p-dropdown>
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Contract Tem Req.</div>
+            <div class="col-sm-8">
+                              <p-radioButton name="Contract1" label="Yes" value="true" [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.contractTempReq"> </p-radioButton>
+                    <span style="margin-left: 10%">
+                        <p-radioButton name="Contract" label="No" value="false" [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.contractTempReq"> </p-radioButton>
+                    </span>
+            </div>
+        </div> -->
+    </div>
+   
+
+    <div class="col-sm-6 col-xs-12 productOrderSeg">
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">PO Currency
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+               {{purchaseOrderModel.poCurrency}} 
+                <!-- <p-dropdown [options]="POCurrency" [(ngModel)]="purchaseOrderModel.poCurrency" placeholder="select a currency" filter="true"></p-dropdown> -->
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Rate Type
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <input type="text" maxlength="50" pInputText [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.rateType" />
+            </div>
+        </div> -->
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Rate Date
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+
+            <div class="col-sm-8">
+                <p-calendar [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.rateDate"></p-calendar>
+            </div>
+        </div> -->
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Exchange Rate
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <input type="text" [OnlyDecimalNumber]="true"  pInputText [(ngModel)]="purchaseOrderModel.purchaseOrderDetail.exchangeRate" />
+            </div>
+        </div> -->
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Amount
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                {{purchaseOrderModel.amount | number:'3.2-5'}}
+                <!-- <input type="text" pInputText OnlyDecimalNumber="true" [(ngModel)]="purchaseOrderModel.amount" /> -->
+            </div>
+        </div>
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">Total Discount
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <input type="text" [OnlyDecimalNumber]="true" (blur)="onTotalDiscountInsert(purchaseOrderModel.totalDiscount)" pInputText [(ngModel)]="purchaseOrderModel.totalDiscount" />
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">PO Number</div>
+            <div class="col-sm-8">
+                <input type="text" pInputText [(ngModel)]="purchaseOrderModel.poNumber" />
+            </div>
+        </div> -->
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">PO Status</div>
+            <div class="col-sm-8" *ngIf="purchaseOrderModel.id >0" >
+                <!-- {{purchaseOrderModel.status}} -->
+                Created
+                <!-- <input type="text" pInputText [(ngModel)]="purchaseOrderModel.status" /> -->
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-6 col-xs-12 productOrderSeg">
+        <div class="row mb30">
+            <div class="col-sm-4 text-right">PO Description
+                    <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-8">
+                <textarea maxlength="500" [(ngModel)]="purchaseOrderModel.description"></textarea>
+            </div>
+        </div>
+        <!-- <div class="row mb30">
+            <div class="col-sm-4 text-right">Justification</div>
+            <div class="col-sm-8">
+                <textarea maxlength="500" [(ngModel)]="purchaseOrderModel.justification"></textarea>
+            </div> 
+        </div> -->
+    </div>
+<div class=""> 
+     <app-cart-list-view [purchaseOrders]="purchaseOrderModel.purchaseOrderItem"
+     (cartItem)="getCartItem($event)"></app-cart-list-view></div>
+  
+    <div class="container">
+            <div class="pull-right mt15">
+                <button class="btnYellow ml15" (click)="onCancel()">Cancel</button>
+                <button class="btnYellow ml15" *ngIf="purchaseOrderModel.id==0" (click)="onSave()">Save</button>
+            </div>
+        </div>
+</div>

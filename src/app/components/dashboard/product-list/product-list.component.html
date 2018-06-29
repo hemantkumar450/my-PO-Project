@@ -1,0 +1,48 @@
+<div class="ProductListingWrapper">
+
+  <div class="ProductListing clearfix" *ngFor="let content of contents ; let i=index">
+    <div>
+
+    </div>
+
+    <h3>{{content.captionName}}</h3>
+
+    <div class="col-sm-4 pd0">
+      <div class="productMainImg" >
+        <img  height="500" src={{content.attachments[0].attachmentUrl}} /> 
+        <!-- *ngIf="content.attachments.length>0 && content.attachments[0].attachmentUrl" -->
+        <!-- <img *ngIf="content.attachments.length===0" height="500" src='//104.236.63.203:6005/attachments/default/no-image.png' /> -->
+      </div>
+    </div>
+    <div class="col-sm-8 prodcutItems pd0" *ngIf="content.name !== 'Container#4'">
+
+      <div class="prodcutItem" *ngFor="let item of content.products" style="cursor: pointer;">
+        <div (click)="onContentSelect(item)">
+          <img height="110" src={{item.productUrl}} />
+          <div class="productitemName">{{item.productName}}</div>
+          <div class="productitemDes">AED {{item.productPrice}}</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-8 prodcutItems pd0" *ngIf="content.name == 'Container#4'">
+
+      <div class="prodcutItem" *ngFor="let item of content.vendors">
+          <!-- (click)="onContentSelect(item)" -->
+        <div>
+          <img height="110" src="{{item.vendorLogo}}" />
+          <div class="clearfix row">
+              <div class="productitemName col-sm-6 text-left">{{item.vendorName}}</div>
+              <div class="productitemName col-sm-6 text-right">{{item.city}}</div>
+          </div>
+         
+          <div class="productitemDes text-left">{{item.mobileNo}}</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

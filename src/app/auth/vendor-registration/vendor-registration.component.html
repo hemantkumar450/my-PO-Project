@@ -1,0 +1,32 @@
+<app-header [isHeaderShow]="isHeaderShow"></app-header>
+<div class="pageTitle">
+  <p-steps [model]="items" (activeIndexChange)="activeIndexChange($event)" [activeIndex]="activeIndex" styleClass="steps-custom"
+    [readonly]="false"></p-steps>
+</div>
+<div class="container" *ngIf="vendorRegisterModel.id > 0 || vendorId === 0">
+  <div class="cartCaontainer" style="padding-top: 25px">
+    <div>
+      <app-vendor-detail [countries]="countries" [organisationtype]="organisationtype" [disabled]="isShow" *ngIf="activeTab === 1"
+        [vendorRegisterModel]="vendorRegisterModel"></app-vendor-detail>
+      <app-contact-detail [disabled]="isShow" *ngIf="activeTab === 2" [vendorRegisterModel]="vendorRegisterModel"></app-contact-detail>
+      <app-account-detail [countries]="countries" [disabled]="isShow" *ngIf="activeTab === 3" [vendorRegisterModel]="vendorRegisterModel"></app-account-detail>
+
+    </div>
+
+    <div class="col-sm-12" style="border: 1px solid #ccc; margin-bottom: 30px;">
+      <div class="col-sm-6"></div>
+      <div class="col-sm-12">
+        <button class="btnYellow mzz15 ml15 pull-right " *ngIf="activeIndex !== 2" (click)="next()">Next</button>
+        <button class="btnYellow mzz15 ml15 pull-right " *ngIf="activeIndex === 2 && vendorId === 0 && isCaptchaValid" (click)="submit()">Submit</button>
+        <re-captcha class="mzz15 ml15 pull-right " *ngIf="activeTab === 3 && !isCaptchaValid && vendorId === 0" (captchaResponse)="handleCorrectCaptcha($event)"
+         site_key="6Lc8C2AUAAAAAMqx-NgZ-Fv380O-ZC4FIdEos_-t"></re-captcha>
+        <button class="btnYellow mzz15 ml15 pull-right" *ngIf="(vendorId > 0 && vendorRegisterModel.vendorStatusId !== 6) || rolePermission.roleId===1"
+          (click)="changeStatus('accept')">Accept</button>
+        <button class="btnYellow mzz15 ml15  pull-right" *ngIf="(vendorId > 0 && vendorRegisterModel.vendorStatusId !== 6) || rolePermission.roleId===1"
+          (click)="changeStatus('reject')">Reject</button>
+        <button class="btnYellow mzz15 ml15  pull-right" *ngIf="vendorId > 0" (click)="back()">Back to List</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

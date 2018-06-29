@@ -1,0 +1,21 @@
+<div class="relatedProductsWrapper">
+  <h3>Related Products</h3>
+  <div class="row">
+    <ul class="productContainetr">
+      <li class=" col-sm-3" *ngFor="let image of relatedList">
+        <div class="product">
+          <div class="text-center">
+            <img height="102" src="{{image.vendorProductAttachments[0].attachmentUrl}}">
+          </div>
+
+          <div class="prodctDec">{{image.productDesc}} </div>
+          <div class="productTag">AED {{image.productPrice}}</div>
+          <div class="productVendor">Vendor: {{image.vendorName}}</div>
+          <button class="addToCart">Add to Cart
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

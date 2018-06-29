@@ -1,0 +1,34 @@
+<div *ngIf="class.length > 0" class="featureTypeConntainer mt15">
+  <h3 class="featureType">Class</h3>
+  <p-scrollPanel [style]="{width: '100%', maxHeight: '300px'}">
+    <div *ngFor="let subCatgory of class" class="clearfix">
+      <span class="checkBoxWrapper">
+        <input type="checkbox"  [(ngModel)]="subCatgory.isSelected" (ngModelChange)="onCategoryFilter('class')" /></span> {{subCatgory.className}} 
+
+    </div>
+  </p-scrollPanel>
+</div>
+
+
+<div *ngIf="commodity.length > 0" class="featureTypeConntainer mt15">
+  <h3 class="featureType">Commodity</h3>
+  <p-scrollPanel [style]="{width: '100%', maxHeight: '300px'}">
+    <div *ngFor="let superSubCatgory of commodity" class="clearfix">
+        <span class="checkBoxWrapper"> 
+        <input type="checkbox" [disabled]="isCommodityCheckBoxDisabled"  [(ngModel)]="superSubCatgory.isSelected" (ngModelChange)="onCategoryFilter('commodity')" /></span> {{superSubCatgory.commodityName}} 
+
+    </div>
+  </p-scrollPanel>
+</div>
+
+
+<div *ngIf="cities?.length > 0" class="featureTypeConntainer mt15">
+  <h3 class="featureType">Cities</h3>
+  <p-scrollPanel [style]="{width: '100%', maxHeight: '300px'}">
+    <div *ngFor="let city of cities" class="clearfix">
+        <span class="checkBoxWrapper"><input type="checkbox"  [(ngModel)]="city.isSelected" (ngModelChange)="onCategoryFilter('city')" /></span> {{city.cityName}} 
+
+      <!-- <p-checkbox [name]="city.cityName" [value]="city.cityName" [label]="city.cityName"></p-checkbox> -->
+    </div>
+  </p-scrollPanel>
+</div>

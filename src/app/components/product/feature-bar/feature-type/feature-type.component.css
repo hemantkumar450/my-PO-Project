@@ -1,0 +1,39 @@
+.ui-chkbox-label{
+    margin-left: 10px;
+}
+.featureType{
+    color: #56555b;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 0 10px;
+}
+.featureTypeConntainer,.productFeatuesContainer{
+    border-top: 1px solid #ccc;
+    padding: 15px;
+    overflow: hidden;
+ 
+}
+
+div /deep/.ui-chkbox{
+float: left;
+}
+
+div /deep/.ui-chkbox{
+    float: left;
+    }
+div /deep/.ui-chkbox-label{
+    float: right;
+    width: 88%;
+}    
+.checkBoxWrapper{
+    border-color: #c0c0c0;
+    background: #fff;
+    color: #212121;
+    width: 18px;
+    height: 18px;
+    vertical-align: sub;
+}
+.checkBoxWrapper input{
+    width: 18px;
+    height: 18px;
+}

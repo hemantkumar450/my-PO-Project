@@ -1,0 +1,9 @@
+
+<div class="input-group globalAutoComplete">
+  <p-autoComplete  [(ngModel)]="searchString" appendTo="body" [suggestions]="results" (completeMethod)="searchEvent($event)"
+    field="name" icon="fa fa-superpowers" (onSelect)="onSelectEvent()" [size]="30"
+    [minLength]="1" placeholder="Hint: type 'v' or 'f'" [dropdown]="true"></p-autoComplete>
+  <!-- <span class="input-group-addon">
+    <i class="fa fa-search"></i>
+  </span> -->
+</div>

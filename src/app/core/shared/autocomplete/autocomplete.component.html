@@ -1,0 +1,25 @@
+
+
+<div class="ui-inputgroup autoComplete autoComplete" *ngIf="isPDU" >
+    <!-- icon="fa fa-caret-down" iconPos="right" -->
+  <!-- <button  pButton type="button"  label="Products" class="autodropDown">
+  </button> -->
+  
+  <p-dropdown [options]="searchBy" appendTo="body" [(ngModel)]="selectedSearchOption"
+   (ngModelChange)="onSearchBySelect(selectedSearchOption)" placeholder="select" styleClass="autoCompletewrapper">
+  </p-dropdown>
+
+  <p-autoComplete  [(ngModel)]="product" [suggestions]="filteredProducts" 
+  (onSelect)="onProductSearch()" (completeMethod)="filterProducts($event)" [size]="30"
+    [minLength]="1" placeholder="Search Here..." [dropdown]="true">
+    <ng-template let-product pTemplate="item">
+      <span>{{product}}</span>
+
+    </ng-template>
+  </p-autoComplete>
+
+  <button pButton type="button" class="btnSearch" icon="fa-search" (click)="onProductSearch()" >
+    <span class="ui-button-icon-left ui-clickable"></span>
+  </button>
+
+</div>

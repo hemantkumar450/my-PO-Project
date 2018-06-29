@@ -1,0 +1,30 @@
+header{
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    padding-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .logoImg {
+     text-align: center;
+    }
+ .vendorHeader{
+     float: none!important;
+ }  
+ .vendorHeader button{
+    float: right !important;
+    padding: 5px;
+    min-width: 150px;
+}  
+.vendorHeader h1{
+    margin-top: 5px;
+    font-size: 18px;
+    float: left !important;
+}
+}
+.btnToBack:hover,.btnToBack:focus,.btnToBack:active{
+transform: none;
+}
+.containeroverflow{
+    overflow: visible!important
+}

@@ -1,0 +1,51 @@
+
+<p-dialog header="Upload {{type}}" width="100%"  class="excel-dialog" [closable] ="false" [responsive]="true" [autoAlign]="true" positionTop="150" [(visible)]="showContent" height="auto"
+  [contentStyle]="{'max-height':'auto','max-width':'640px','width':'100%'}">
+ 
+  <div class="ui-inputgroup" style="padding-top: 15px;">
+    <input type="text" OnlyAlphaNumeric pInputText placeholder="Select a file">
+    <span class="ui-inputgroup-addon uploadBtnAddon browseUpload">
+      <input #file class="productUpload" type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+        (change)="upload($event.target.files)" />
+      <button class="browseBtn">Browse & Upload</button>
+    </span>
+  </div>
+
+  <div style="padding-top: 15px;" *ngIf="errors.length === 0">
+    <p-scrollPanel [style]="{width: '100%', height: '130px'}">
+      <div style="padding:1em;line-height:1.5;width:788px;padding-right: 30px;">
+        <p-table [columns]="cols" [value]="data">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </p-scrollPanel>
+  </div>
+
+  <div style="padding-top: 15px;" *ngIf="errors.length > 0">
+    <p-scrollPanel [style]="{width: '100%', height: '130px'}">
+      <div style="padding: 10px;">
+        <div *ngFor="let err of errors;let i=index">
+          <div class="text-danger">{{i+1}}. {{err.errorMessage}}</div>
+        </div>
+      </div>
+    </p-scrollPanel>
+  </div>
+
+  <p-footer>
+    <button style="height: 30px;    margin-right: 15px;" (click)="showContentFile()" class="btnYellow">Cancel</button>
+  </p-footer>
+
+</p-dialog>

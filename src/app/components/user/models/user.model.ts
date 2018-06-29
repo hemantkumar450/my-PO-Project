@@ -1,0 +1,25 @@
+export class UserModel{
+address:string='';
+attachmentId:number=0
+attachmentName:string=''
+attachmentPath:string='';
+attachmentUrl:string='';
+contactNo:string='';
+departmentId:number=0;
+email:string='';
+firstName:string='';
+gender:any;
+id:number=0
+isActive:boolean=true
+lastName:string=''
+middleName:string=''
+newPassword:string='';
+tokenExpiryTime:any;
+tokenValue:any
+userName:string=''
+userPermissions:Array<any>=[];
+userPwd:string=''
+userRoleIds:Array<any>=[]
+userStatusId:number=0;
+roleName:string='';
+}

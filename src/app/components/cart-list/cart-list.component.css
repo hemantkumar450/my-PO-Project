@@ -1,0 +1,46 @@
+h3{
+    font-size: 24px;
+    text-transform: uppercase;
+}
+.cartContainer{
+    padding: 10px 0 50px;
+}
+
+/deep/.ui-dialog-footer button{
+    margin-left: 15px;
+}
+
+/deep/.ui-dialog-footer button .fa {
+    display: none;
+}
+/deep/.ui-dialog-footer button{
+    transform: none!important;
+    height: 45px;
+}
+/deep/.ui-dialog-footer .ui-button-text{
+    padding: 0 15px;
+}
+.cartContainer /deep/.ui-table .ui-table-thead > tr > th{
+    padding: .6em .5em;
+    background: #575759;
+    border: 1px solid #d6d6d6;
+    color: #fff;
+    font-weight: normal;
+    border-top: none;
+    text-align: center;
+}
+.ui-table .ui-datatable-data>tr>td{
+    padding: 10px;
+    color: #56555b;
+   
+}
+.ui-table .ui-datatable-data>tr>{
+    border: 1px solid #D5D5D5;
+}
+.cartContainer /deep/.ui-table .ui-table-tbody > tr > td button{
+    height: auto;
+}
+.cartContainer /deep/.ui-table .ui-table-tbody > tr > td {
+    word-break: break-word;
+    text-align: center;
+  }

@@ -1,0 +1,207 @@
+<div class="container mt15">
+    <h3 class="pull-left">Requisition Information</h3>
+    <div class="pull-right mt15">
+        <button class="btnYellow ml15" (click)="onCancel()">Cancel</button>
+        <button class="btnYellow ml15"  *ngIf="this.requisitionModel.id==0" (click)="onSave()">Save</button>
+    </div>
+</div>
+<div class="container pd0 mt30 mb30 productOrder">
+<div class="productOrderSeg clearfix">
+    <div class="">
+
+        <div class="row mb30">
+            <div class="col-sm-3 text-right">Requisition Description
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-7">
+                <input type="text" pInputText [(ngModel)]="requisitionModel.description" maxlength="500" />
+            </div>
+        </div>
+        <div class="row  mb30">
+                <div class="col-sm-3  text-right">Company
+                    <i class="fa fa-asterisk"></i>
+                </div>
+                <div class="col-sm-7 ">
+                    <p-dropdown [options]="companies" [(ngModel)]="requisitionModel.purchaseRequest.companyId" placeholder="select a company"
+                        filter="true"></p-dropdown>
+                </div>
+            </div>
+            <div class="row  mb30">
+                    <div class="col-sm-3  text-right">Department
+                        <i class="fa fa-asterisk"></i>
+                    </div>
+                    <div class="col-sm-7 ">
+                        <p-dropdown [options]="departments" (onChange)="getSubDepartment(requisitionModel.purchaseRequest.departmentId)" [(ngModel)]="requisitionModel.purchaseRequest.departmentId"
+                            placeholder="select a department" filter="true"></p-dropdown>
+                    </div>
+                </div>
+                <div class="row  mb30">
+                        <div class="col-sm-3  text-right">Sub Department
+                            <div><small>(ECM Only)</small></div></div>
+                        <div class="col-sm-7 ">
+                            <p-dropdown [options]="subDepartment" [(ngModel)]="requisitionModel.purchaseRequest.subDepartmentId" placeholder="select a sub department"
+                                filter="true"></p-dropdown>
+                        </div>
+                    </div>
+                    <div class="row mb30">
+                            <div class="col-sm-3  text-right">PR Type
+                                <i class="fa fa-asterisk"></i>
+                            </div>
+                            <div class="col-sm-7 ">
+                                <p-dropdown [options]="PRtypes" [(ngModel)]="requisitionModel.purchaseRequest.prTypeId" placeholder="select a prtype" filter="true"></p-dropdown>
+                            </div>
+                        </div>
+                        <div class="row  mb30">
+                                <div class="col-sm-3  text-right">Requisition Classification
+                                    <i class="fa fa-asterisk"></i>
+                                </div>
+                                <div class="col-sm-7 ">
+                                    <p-dropdown [options]="requisitionClassification" [(ngModel)]="requisitionModel.purchaseRequest.requisitionClassificationId"
+                                        placeholder="select a requisition classification" filter="true"></p-dropdown>
+                                </div>
+                            </div>
+                            <div class="row  mb30">
+                                    <div class="col-sm-3  text-right">PR Category
+                                        <i class="fa fa-asterisk"></i>
+                        
+                                    </div>
+                                    <div class="col-sm-7 ">
+                                        <p-dropdown [options]="PRCategory" [(ngModel)]="requisitionModel.purchaseRequest.prCategoryId" placeholder="select a PR category"
+                                            filter="true"></p-dropdown>
+                                    </div>
+                                </div>
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Single Source Justification
+                <i class="fa fa-asterisk"></i>
+
+            </div>
+            <div class="col-sm-7 ">
+                <p-dropdown [options]="singleSourceJustification" [(ngModel)]="requisitionModel.purchaseRequest.singleSourceJustificationId"
+                    placeholder="select a single source justification" filter="true"></p-dropdown>
+            </div>
+        </div>
+
+       
+
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Job Started Justification
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-7 ">
+                <input type="text" pInputText [(ngModel)]="requisitionModel.purchaseRequest.jobStartedJustification" />
+            </div>
+        </div>
+
+       
+
+
+        <div class="row mb30">
+            <div class="col-sm-3  text-right">Remarks</div>
+            <div class="col-sm-7 ">
+                <input type="text" pInputText [(ngModel)]="requisitionModel.remarks" maxlength="500" />
+            </div>
+        </div>
+
+
+     
+
+
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Preparer Telephone/EXT</div>
+            <div class="col-sm-7 ">
+                <input type="text" pInputText maxlength="10" [OnlyNumber]='true' [(ngModel)]="requisitionModel.purchaseRequest.preparerTelephone" />
+            </div>
+        </div>
+
+
+     
+
+
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Budgeted
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-7 ">
+                <p-dropdown [options]="budget" [(ngModel)]="requisitionModel.budgeted" placeholder="select a budget" filter="true"></p-dropdown>
+            </div>
+        </div>
+
+
+       
+
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Type Of Contract</div>
+            <div class="col-sm-7 ">
+                <p-dropdown [options]="contractTypes" [(ngModel)]="requisitionModel.purchaseRequest.contractTypeId" placeholder="select a type of contract"
+                    filter="true"></p-dropdown>
+            </div>
+        </div>
+
+
+       
+
+
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Contract Year (YYYY)</div>
+            <div class="col-sm-7 ">
+                <input type="text" OnlyNumber="true" maxlength="4" pInputText [(ngModel)]="requisitionModel.purchaseRequest.contractYear"
+                />
+            </div>
+        </div>
+
+        <div class="row mb30">
+            <div class="col-sm-3  text-right">From Date</div>
+            <div class="col-sm-7 ">
+                <p-calendar [(ngModel)]="requisitionModel.purchaseRequest.fromDate"></p-calendar>
+            </div>
+        </div>
+
+        <div class="row mb30">
+            <div class="col-sm-3  text-right">To Date</div>
+            <div class="col-sm-7 ">
+                <p-calendar [(ngModel)]="requisitionModel.purchaseRequest.toDate"></p-calendar>
+            </div>
+        </div>
+
+    </div></div>
+    <h3>Delivery</h3>
+    <div class="productOrderSeg clearfix">
+    <div class="">
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Need By Date
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-7 ">
+                <p-calendar [minDate]="minDate" [(ngModel)]="requisitionModel.deliveryDate"></p-calendar>
+            </div>
+        </div>
+        <!-- <div class="col-sm-12  mb30">
+            <div class="col-sm-3">Requester</div>
+            <div class="col-sm-8">
+                    <p-dropdown [(ngModel)]="requisitionModel.pu" placeholder="select a community name" filter="true"></p-dropdown>
+            </div>
+        </div> -->
+        <div class="row  mb30">
+            <div class="col-sm-3  text-right">Deliver TO Location
+
+                <br/>
+                <small>One Time Address</small>
+                <i class="fa fa-asterisk"></i>
+            </div>
+            <div class="col-sm-7 ">
+                <p-dropdown [options]="shipToLocation" [(ngModel)]="requisitionModel.shipToLocationId" placeholder="select a location" filter="true"></p-dropdown>
+            </div>
+        </div>
+    </div></div>
+    <div class="">
+        <app-cart-list-view [purchaseOrders]="requisitionModel.purchaseOrderItem" (cartItem)="getCartItem($event)"></app-cart-list-view>
+    </div>
+
+    <div class="container">
+        <!-- <h3 class="pull-left">Requisition Info</h3> -->
+        <div class="pull-right mt15">
+            <button class="btnYellow ml15" (click)="onCancel()">Cancel</button>
+            <button class="btnYellow ml15" *ngIf="this.requisitionModel.id==0" (click)="onSave()">Save</button>
+        </div>
+    </div>
+</div>

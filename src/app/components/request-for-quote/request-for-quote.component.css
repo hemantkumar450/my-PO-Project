@@ -1,0 +1,391 @@
+
+.requestQuoteContentWrapper{
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 30px 0;
+}
+.requestLabel{
+    font-size: 19px;
+}
+
+/deep/.ui-fileupload-choose .ui-button-text.ui-clickable{
+    background: #cbcbcb;
+    border: none;
+    color: #000;
+    font-size: 16px;
+    line-height: 30px;
+    height: 38px;
+    font-weight: bold;
+  }
+  /deep/.ui-fileupload-choose .ui-button-icon-left{
+    display: none;
+  }
+  .ui-inputgroup-addon{
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  /deep/.ui-fileupload-choose .ui-inputgroup .ui-button,  .ui-inputgroup-addon /deep/.ui-button{
+    border: none;
+    border-radius: 0
+  }
+  /deep/.ui-inputgroup .ui-button:hover,/deep/.ui-inputgroup .ui-button:focus{
+    transform: none!important;}
+
+    /deep/.ui-chkbox-label{
+        vertical-align: text-top;
+        margin-left: 10px;
+    } 
+    .vendorSec{
+        margin: 5px -8px  25px;
+    
+        padding: 10px;;
+    }
+    input,select,textarea{
+        border-width: 1px;
+    }
+::ng-deep .ui-scrollpanel-content{
+        padding: 10px;
+    }
+
+    ::ng-deep  .ui-scrollpanel-bar {
+  background: #fdd933;}
+  
+
+  h3{
+    font-size: 24px;
+  }
+  .vendorDetail{
+    /* margin-top: 30px; */
+    /* margin-bottom: 50px; */
+  }
+  
+  /deep/.ui-fileupload-choose .ui-button-text.ui-clickable{
+    background: #cbcbcb;
+    border: none;
+    color: #000;
+    font-size: 16px;
+    line-height: 30px;
+    height: 38px;
+    font-weight: bold;
+  }
+  /deep/.ui-fileupload-choose .ui-button-icon-left{
+    display: none;
+  }
+  .ui-inputgroup-addon{
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  /deep/.ui-fileupload-choose .ui-inputgroup .ui-button{
+    border: none;
+    border-radius: 0
+  }
+  /deep/.ui-inputgroup .ui-button:hover,/deep/.ui-inputgroup .ui-button:focus{
+    transform: none!important;}
+  
+    /deep/.ui-inputtext{
+      width: 100%;
+      height: 38px;
+      background-color: #ffffff;
+      border: 2px solid #d9d9d9;
+      color: #56555b;
+      padding-left: 10px;
+      padding-right: 10px;
+      outline: none!important;
+      transition-property: border-color;
+      transition-duration: 1s;
+    }
+    /deep/.ui-calendar{
+      width: 100%;
+    }
+    /deep/.ui-datepicker-trigger{
+      margin-left: -28px;
+    }
+  
+    .uploadBtnAddon input{
+      width: 115px;
+      height: 38px;
+      opacity: 0;
+      z-index: 11;
+      position: relative;
+  }
+  .uploadBtnAddon{
+    overflow: hidden;
+    position: relative;
+  }
+  .browseBtn{
+  width: 115px;
+  height: 38px;
+  position: absolute;
+      top: 0;
+      right: 0;
+  }
+  
+  
+  .toolTip {
+    color:#C0C0C0;
+    padding-top: 25px
+  }
+
+  /deep/.ui-datepicker select.ui-datepicker-month {
+    width: 44% !important;
+  }
+  
+  /deep/.ui-datepicker select.ui-datepicker-year {
+    width: 48% !important;
+  }
+
+  /deep/.ui-state-default {
+    border: 2px solid #d6d6d6;
+    background: #ffffff;
+    /* color: #fff; */
+}
+.vendorSec /deep/.ui-widget-content{
+  border: 1px solid #D5D5D5;
+}
+.dropzone input{
+  opacity: 0;
+  height: 50px;
+  width: 100%;
+  border:1px dashed #ccc;
+  border-radius: 6px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.dropzone label{
+  height: 50px;
+  width: 100%;
+  border:1px dashed #ccc;
+  border-radius: 6px;
+  text-align: center;
+  padding-top: 15px;
+  cursor: pointer;
+  position: relative;
+}
+.icon-padding{
+  width: 29px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  color: red;
+  padding-bottom: 3px;
+}
+
+
+.requestQuoteContentWrapper{
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 30px 0;
+}
+.requestLabel{
+  font-size: 19px;
+}
+
+/deep/.ui-fileupload-choose .ui-button-text.ui-clickable{
+  background: #cbcbcb;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  line-height: 30px;
+  height: 38px;
+  font-weight: bold;
+}
+/deep/.ui-fileupload-choose .ui-button-icon-left{
+  display: none;
+}
+.ui-inputgroup-addon{
+  background: none;
+  border: none;
+  padding: 0;
+}
+/deep/.ui-fileupload-choose .ui-inputgroup .ui-button,  .ui-inputgroup-addon /deep/.ui-button{
+  border: none;
+  border-radius: 0
+}
+/deep/.ui-inputgroup .ui-button:hover,/deep/.ui-inputgroup .ui-button:focus{
+  transform: none!important;}
+
+  /deep/.ui-chkbox-label{
+      vertical-align: text-top;
+      margin-left: 10px;
+  } 
+  .vendorSec{
+      margin: 5px -8px  25px;
+  
+      padding: 10px;;
+  }
+  input,select,textarea{
+      border-width: 1px;
+  }
+::ng-deep .ui-scrollpanel-content{
+      padding: 10px;
+  }
+
+  ::ng-deep  .ui-scrollpanel-bar {
+background: #fdd933;}
+
+
+h3{
+  font-size: 24px;
+}
+.vendorDetail{
+  /* margin-top: 30px; */
+  /* margin-bottom: 50px; */
+}
+
+/deep/.ui-fileupload-choose .ui-button-text.ui-clickable{
+  background: #cbcbcb;
+  border: none;
+  color: #000;
+  font-size: 16px;
+  line-height: 30px;
+  height: 38px;
+  font-weight: bold;
+}
+/deep/.ui-fileupload-choose .ui-button-icon-left{
+  display: none;
+}
+.ui-inputgroup-addon{
+  background: none;
+  border: none;
+  padding: 0;
+}
+/deep/.ui-fileupload-choose .ui-inputgroup .ui-button{
+  border: none;
+  border-radius: 0
+}
+/deep/.ui-inputgroup .ui-button:hover,/deep/.ui-inputgroup .ui-button:focus{
+  transform: none!important;}
+
+  /deep/.ui-inputtext{
+    width: 100%;
+    height: 38px;
+    background-color: #ffffff;
+    border: 2px solid #d9d9d9;
+    color: #56555b;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none!important;
+    transition-property: border-color;
+    transition-duration: 1s;
+  }
+  /deep/.ui-calendar{
+    width: 100%;
+  }
+  /deep/.ui-datepicker-trigger{
+    margin-left: -28px;
+  }
+
+  .uploadBtnAddon input{
+    width: 115px;
+    height: 38px;
+    opacity: 0;
+    z-index: 11;
+    position: relative;
+}
+.uploadBtnAddon{
+  overflow: hidden;
+  position: relative;
+}
+.browseBtn{
+width: 115px;
+height: 38px;
+position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+.toolTip {
+  color:#C0C0C0;
+  padding-top: 25px
+}
+
+/deep/.ui-datepicker select.ui-datepicker-month {
+  width: 44% !important;
+}
+
+/deep/.ui-datepicker select.ui-datepicker-year {
+  width: 48% !important;
+}
+
+/deep/.ui-state-default {
+  border: 2px solid #d6d6d6;
+  background: #ffffff;
+  /* color: #fff; */
+}
+.vendorSec /deep/.ui-widget-content{
+border: 1px solid #D5D5D5;
+}
+.dropzone input{
+opacity: 0;
+height: 50px;
+width: 100%;
+border:1px dashed #ccc;
+border-radius: 6px;
+position: absolute;
+left: 0;
+top: 0;
+}
+.dropzone label{
+height: 50px;
+width: 100%;
+border:1px dashed #ccc;
+border-radius: 6px;
+text-align: center;
+padding-top: 15px;
+cursor: pointer;
+position: relative;
+}
+.icon-padding{
+width: 29px;
+padding: 6px;
+border: 1px solid #ccc;
+cursor: pointer;
+color: red;
+padding-bottom: 3px;
+}
+/* .uploadDocContainer{
+  padding: 20px;
+  border: 1px dashed #ccc;
+  position: relative;
+} */
+.thumnailItem {
+  background: #fdd933;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.chipItem{
+  background: #fdd933;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.vendorChips{
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.chipItem .fa{
+  margin-left: 5px;
+}
+.chipItem:hover,.chipItem:focus,.chipItem:active{
+  background: #e0bf29;
+  color: #545151;
+}
+.vendorChips{
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.confirmDialog /deep/ .ui-confirmdialog .ui-widget.ui-button{
+  margin-left: 15px;
+  height: auto;
+  color: #000!important;
+}
+

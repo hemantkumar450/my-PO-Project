@@ -1,0 +1,24 @@
+<div class="bannerSec">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-3">
+        <app-product-categories [captionName]="captionName" [categories]="categories"></app-product-categories>
+      </div>
+
+      <div class="col-sm-8 col-md-9">
+        <app-slider [images]="categoryImages"></app-slider>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="productList">
+  <div class="container">
+    <div class="row">
+      <app-product-list [contents]="container_contents"></app-product-list>
+      <!-- <app-product-list></app-product-list>
+      <app-product-list></app-product-list> -->
+    </div>
+
+  </div>
+</div>

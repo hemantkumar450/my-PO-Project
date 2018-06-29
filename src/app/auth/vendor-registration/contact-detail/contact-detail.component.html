@@ -1,0 +1,330 @@
+<h3>Contact Detail</h3>
+<div class="col-sm-12 vendorDetail" style="border: 1px solid #ccc; margin-bottom: 2px; padding-bottom: 30px;">
+
+  <div class="col-sm-offset-1 col-sm-10">
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Name of Company Owner
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="vendorRegisterModel.companyOwner" name="Ownername" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the full name of the individual who has majority % of the company ownership.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Passport Number
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur"  [disabled]="disabled" maxlength="50" [(ngModel)]="vendorRegisterModel.passportNo" name="passportNo" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the passport number of the person named  above.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Contact Person Name
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="vendorRegisterModel.contactPersonName" name="contactPersonName"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the full name of the contact point.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 text-right" style="padding-top: 14px">Position
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="vendorRegisterModel.position" name="postion" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the position (job title) of the contact point.
+      .
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Email Address
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" trim="blur" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [disabled]="disabled" maxlength="50" [(ngModel)]="vendorRegisterModel.email"
+          name="emailAddress" pinputtext #emailVar="ngModel" required>
+        <span class="text-danger" *ngIf="(emailVar.touched || emailVar.dirty) && emailVar.errors">
+          <span *ngIf="emailVar.errors.pattern">
+            Not valid email address.
+          </span>
+        </span>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide an email address for the contact point."></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Telephone Number</div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" trim="blur" [disabled]="disabled" OnlyDecimalNumber="true" maxlength="15" [(ngModel)]="vendorRegisterModel.telephoneNo"
+          name="telephone" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide a landline contact telephone number for the contact point (including international dialling code).
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Telephone Number (mobile)
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text"  trim="blur" [disabled]="disabled" OnlyDecimalNumber="true" maxlength="15" [(ngModel)]="vendorRegisterModel.mobileNo"
+          name="mobile" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide a mobile contact telephone number for the contact point (including international dialling code)"></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Convictions</div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select one" [(ngModel)]="vendorRegisterModel.convictions" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Within the past five (5) years, has your organisation, Directors or partner or any other person who has powers of representation, decision or control been convicted of any of the offences listed below?
+
+      a. conspiracy  where that conspiracy relates to participation in a criminal organisation;
+      b. corruption;
+      c. bribery;
+      d. conspiracy to defraud;
+      e. fraud or theft;
+      f. fraudulent trading;
+      g. any offence where the court has determined that there is a terrorist connection; or
+      h. money laundering."></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Bankruptcy
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select one" [options]="tempDropdown" [(ngModel)]="vendorRegisterModel.bankruptcy"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Is your organisation bankrupt or the subject of insolvency or winding-up proceedings,
+       where your assets are being administered by a liquidator or by the court, where it is in an arrangement with creditors, 
+      where its business activities are suspended or it is in any analogous situation arising from a similar procedure under the laws and regulations of any State?"></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Professional Misconduct
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select one" [options]="tempDropdown" [(ngModel)]="vendorRegisterModel.professionalMisconduct"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Is your organisation guilty of grave professional misconduct,  which renders its integrity questionable?
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Competition
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.competition" placeholder=" Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Has your organisation entered into agreements with other economic operators aimed at distorting competition?
+      "></i>
+    </div>
+
+    <!-- <div class="row mt15">
+      <div class="col-sm-3 mt15">Conflict of Interest
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [(ngModel)]="vendorRegisterModel.conflictOfInterest1" placeholder=" Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Does your organisation have a conflict of interest that cannot be effectively remedied?
+      "></i>
+    </div> -->
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Deficiencies in Performance
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.deficienciesInPerformance" placeholder=" Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Has your organisation shown significant or persistent deficiencies
+       in the performance of a substantive requirement under a prior contract with the Customer or any other client,
+       which has led to early termination of that prior contract, damages or other comparable sanctions?"></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Misleading Information
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.misleadingInfo" placeholder=" Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Has your organisation negligently provided misleading information that may have a material influence on decisions concerning exclusion, selection or award?
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Conduct of Business
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.conductOfBusiness" placeholder=" Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Has your organisation been convicted of a criminal offence relating to the conduct of its business or profession? 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Company Turnover
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10 " style="position: relative;">
+        <button *ngIf="!disabled" (click)="addTurnOver()" style="position: absolute; right: 15px; top: 25px; margin-top: -10px; border-radius: 50%; padding: 2px 4px 4px; width: 20px; height: 20px; ">+</button>
+        <div class="table-resposnive" style="padding-right: 22px;">
+          <table class="table table-bordered">
+            <tr>
+              <th>Year</th>
+              <th>Organisation annual turnover (AED)</th>
+              <th>Group annual turnover (AED) (where applicable)</th>
+            </tr>
+            <tr *ngFor="let turnover of vendorRegisterModel.companyTurnovers; let i = index">
+              <td>
+                <input [disabled]="disabled" type="text" trim="blur" maxlength="4" OnlyDecimalNumber="true" pInputText [(ngModel)]="turnover.year" name="turnoveryear"
+                  pinputtext>
+              </td>
+              <td>
+                <input [disabled]="disabled" OnlyDecimalNumber="true" type="text" trim="blur" maxlength="10" pInputText [(ngModel)]="turnover.organisationAnnualTurnOver"
+                  name="turnoverOrg" pinputtext>
+
+              </td>
+              <td>
+                <input [disabled]="disabled" OnlyDecimalNumber="true" type="text" trim="blur" maxlength="10" pInputText [(ngModel)]="turnover.groupAnnualTurnOver"
+                  name="turnoverGrp" pinputtext>
+              </td>
+              <i *ngIf="i > 0" class="tableCross" (click)="deleteRow(i)">x</i>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Financial Status
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.financialStatus" placeholder=" Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <!-- <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please upload a valid copy of your SME Registration Certificate.
+      "></i> -->
+    </div>
+    <div class="row mt15" *ngIf="vendorRegisterModel.financialStatus">
+      <div class="col-sm-3 mt15 text-right">If Yes, please provide an explanation
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input [disabled]="disabled" type="text" OnlyAlphaNumeric   trim="blur" maxlength="200" [(ngModel)]="vendorRegisterModel.financialStatusYes" name="turnover"
+          pinputtext>
+        <!-- <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please upload a valid copy of your SME Registration Certificate.
+        "></i> -->
+      </div>
+    </div>
+
+    <div class="row mt15" *ngIf="!vendorRegisterModel.financialStatus">
+      <div class="col-sm-3 mt15 text-right">If No, please provide an explanation
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input [disabled]="disabled" type="text" OnlyAlphaNumeric   trim="blur" maxlength="200" [(ngModel)]="vendorRegisterModel.financialStatusNo" name="turnover"
+          pinputtext>
+        <!-- <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please upload a valid copy of your SME Registration Certificate.
+          "></i> -->
+      </div>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Holding / Parent Company</div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.parentCompany" placeholder="Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Are you part of a wider group (e.g. a subsidiary of a holding/parent company)?
+      "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="vendorRegisterModel.parentCompany">
+      <div class="col-sm-3 mt15 text-right">If Yes, please provide details
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input [disabled]="disabled" type="text" OnlyAlphaNumeric   trim="blur" maxlength="200" [(ngModel)]="vendorRegisterModel.parentCompanyYes" name="turnover"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="vendorRegisterModel.parentCompany">
+      <div class="col-sm-3 mt15 text-right">Parent Company Guarantee
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="200" [(ngModel)]="vendorRegisterModel.parentCompanyGuarantee" name="turnover"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Would the Ultimate / parent company be willing to provide a guarantee if necessary?"></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Association with Emaar employee or supplier
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.associationWithEmaarSupplier" placeholder=" Select one"
+          [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Does you organisation have any association either, directly or indirectly with any employee or supplier of the Customer?
+      "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="vendorRegisterModel.associationWithEmaarSupplier">
+      <div class="col-sm-3 mt15 text-right">If Yes, please provide details
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="200" [(ngModel)]="vendorRegisterModel.associationWithEmaarSupplierYes"
+          name="AsEmarIfYes" pinputtext>
+      </div>
+      <!-- <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide a brief outline of the nature of the conflict and arrangements proposed to resolve or manage the conflict. 
+          "></i> -->
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Conflict of Interest
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" [(ngModel)]="vendorRegisterModel.conflictOfInterest1" placeholder="Select one" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <!-- <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please upload a valid copy of your SME Registration Certificate.
+      "></i> -->
+    </div>
+
+    <div class="row mt15" *ngIf="vendorRegisterModel.conflictOfInterest1">
+      <div class="col-sm-3 mt15 text-right">If Yes, please provide details
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="200" [(ngModel)]="vendorRegisterModel.conflictOfInterest1Yes" name="turnover"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide a brief outline of the nature of the conflict and arrangements proposed to resolve or manage the conflict. 
+        "></i>
+    </div>
+
+  </div>
+</div>

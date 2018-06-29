@@ -1,0 +1,26 @@
+<div >
+  <div class="cartCaontainer" class="mb30">
+    <h3 style="margin-top: 0">CMS Contains</h3>
+    <p-dataTable [value]="cms" [responsive]="true" > 
+      <p-column field="name" header="CMS Name" ></p-column>
+      <p-column field="captionName" header="Caption Name" ></p-column>
+      <p-column header="Action" [style]="{'width':'80px', 'text-align':'center'}">
+              <ng-template style="width:80px" let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">
+                <a>
+                  <i class="fa fa-edit" aria-hidden="true" style="cursor:pointer" (click)="onClickCms(car)" *ngIf="roleId != 2"></i>
+                  <i class="fa fa-eye" 
+                  aria-hidden="true" 
+                  style="cursor:pointer" 
+                  (click)="onClickCms(car)" 
+                  *ngIf="roleId === 2 
+                  && 
+                  cmsPermission.canView === true 
+                  && 
+                  cmsPermission.canEdit === false"></i>
+                  <i class="fa fa-edit" aria-hidden="true" style="cursor:pointer" (click)="onClickCms(car)" *ngIf="roleId == 2 && cmsPermission.canEdit === true"></i>
+                </a>
+              </ng-template>
+            </p-column>
+    </p-dataTable>
+  </div>
+</div>

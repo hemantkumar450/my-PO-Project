@@ -1,0 +1,20 @@
+.innerTdDataContainer{
+  padding: 10px 0;
+  margin: 10px -10px 0;
+  border-top: 1px solid #ccc;
+}
+.innerTdData{
+  padding: 0 10px;
+}
+.vendorname{
+  padding-right: 5px;
+ 
+}
+.vendorname::after{
+  content: "|";
+  margin-left: 5px;
+}
+.readMore{
+  text-decoration: underline;
+  margin-left: 5px;
+}

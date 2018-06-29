@@ -1,0 +1,56 @@
+<h3>
+{{captionName}}</h3>
+<!-- <p-accordion>
+<div *ngFor="let category of categories">
+    <p-accordionTab header={{category.segmentName}}>
+        <ul>
+          <li>
+            <a href="">Item 1</a>
+          </li>
+          <li>
+            <a href="">Item 3</a>
+          </li>
+          <li>
+            <a href="">Item 3</a>
+          </li>
+    
+        </ul>
+    
+      </p-accordionTab>
+</div>
+ 
+
+  
+ 
+</p-accordion> -->
+
+
+
+<ul class="megaMenu">
+  <li *ngFor="let category of categories">
+    <span title="{{category.segmentName}}"  (mouseover)="getFamilyBySegmentId(category)"> {{category.segmentName | truncate:25}}</span>
+
+
+    <ul>
+      <li *ngFor="let family of families">
+        <span  title="{{family.familyName}}" (mouseover)="getClassByFamilyId(family)" (click)="onClick(family ,'family')">{{family.familyName | truncate:18}}</span>
+        <ul>
+          <li *ngFor="let class of classes">
+            <span  title="{{class.className}}" (mouseover)="getCommodityByClassId(class)" (click)="onClick(class ,'class')"> {{class.className | truncate:18}}</span>
+
+
+            <ul>
+              <li *ngFor="let commodity of commodities">
+                <span title="{{commodity.commodityName}}" (click)="onClick(commodity, 'commodity')"> {{commodity.commodityName | truncate:18}}</span>
+
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </li>
+
+
+</ul>

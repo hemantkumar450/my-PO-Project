@@ -1,0 +1,74 @@
+h3{
+    background-color: #ececec; border: 1px solid #cbcbcb;
+    padding: 10PX;
+    font-weight: 400;
+    margin: 0 0 -2px;
+}
+/deep/.ui-accordion .ui-accordion-header a{
+    padding: 10px;
+    background: #FFF;
+}
+
+/deep/.ui-accordion .ui-accordion-content{
+    border:1px solid #ccc;
+    padding: 0;
+}
+/deep/.ui-accordion .ui-accordion-content li a{
+    display: block;
+    padding: 4px 8px;}
+
+    /deep/.ui-accordion-header.ui-state-active a{
+        background: #f7b43c;
+    }
+a:hove{
+    text-decoration: none;
+}
+.megaMenu li ul{
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    z-index: 1000000000;
+    width: 180px;
+    background: #fff;
+}
+@media screen and (max-width: 1003px) {
+    .megaMenu li ul{
+        position: relative;
+        left:0;
+        top: 0;
+        width: 100%;
+    }
+}
+.megaMenu li:hover > ul,.megaMenu li:focus > ul{
+    display: block;
+  
+}
+.megaMenu li:hover,.megaMenu li:focus{
+  box-shadow: 0px 0px 10px #dfcf88;
+  background: #fdd933;
+}
+.megaMenu li{
+    position: relative;
+    border-top: none;
+    cursor: pointer;
+}
+.megaMenu li span{
+    padding: 10px 15px;
+    display: block;
+    border: 1px solid #ccc;
+    position: relative;
+    padding-right: 25px;
+    z-index: 1000000000;
+}
+.megaMenu li  span::after{
+    position: absolute;
+    content: "\f105";
+    right: 5px;
+    top: 50%;
+    color: #ccc;
+    font: normal normal normal 14px/1 FontAwesome;
+    margin-top: -7px;
+}
+
+

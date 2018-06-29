@@ -1,0 +1,25 @@
+.requestLabel{
+    font-size: 19px;
+}
+.vendorList /deep/.ui-chkbox-label{
+    font-size: 12px;
+}
+.chipItem{
+    background: #fdd933;
+    padding: 5px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+.vendorChips{
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+.chipItem .fa{
+    margin-left: 5px;
+}
+.chipItem:hover,.chipItem:focus,.chipItem:active{
+    background: #e0bf29;
+    color: #545151;
+}

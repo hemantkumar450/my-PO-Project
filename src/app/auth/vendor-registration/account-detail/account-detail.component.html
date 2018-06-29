@@ -1,0 +1,334 @@
+<h3>Account Detail</h3>
+<div class="col-sm-12 vendorDetail" style="border: 1px solid #ccc; margin-bottom: 2px; padding-bottom: 30px;" *ngFor="let account of vendorRegisterModel.vendorAccounts">
+
+    <div class="col-sm-offset-1 col-sm-10">
+    <div class="row mt15">
+      <div class="col-sm-3 mb15 text-right">Company Bank Detail
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mb15">
+        <input type="text" OnlyAlphabets   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.bankDetails" name="bankDetail" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-3 mt15 text-right">Account Name
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.accountName" name="account" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Account Number
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" OnlyDecimalNumber="true" maxlength="50" [(ngModel)]="account.accountNo" name="accountNo."
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">IBAN
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.iban" name="iban" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Swift Code
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.swiftCode" name="swiftCode" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Payment Currency
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.paymentCurrency" name="currency" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Name of Bank
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.nameOfBank" name="bankName" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Branch Name
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.branchName" name="branchName" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">PO Box / Postal Code
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" [disabled]="disabled" OnlyDecimalNumber="true" maxlength="6" [(ngModel)]="account.branchZipCode" name="postal code"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Town / City
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.branchCity" name="city" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Country
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select a Country" [(ngModel)]="account.branchCountryId" [options]="countries"  filter="true"></p-dropdown>
+
+      </div>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Business Activities(Group)
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select one" [options]="tempDropdownActivity" [(ngModel)]="account.businessActivitiesGroup"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Other Business Activities(Optional)
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="500" [(ngModel)]="account.otherBusinessActivitiesOptional" name="otherBusiness"
+          pinputtext>
+      </div>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Resources
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.resources" name="resources" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the total number of your staff providing goods and/or services relating to the main business activities of your company.
+        "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Contact 1
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <textarea name="Contact1" trim='blur' OnlyAlphaNumeric [disabled]="disabled" maxlength="200" [(ngModel)]="account.contact1" rows="3" cols="111"></textarea>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide details of your 1rd contract reference.  Your response should include:
+
+      a. Client name
+      b. Contact name
+      c. Position of contact in organisation  
+      d. Email address of contact 
+      e. Contract start date
+      f. Contract status (current / finished / terminated)
+      g. Estimated contract Value
+      h. In no more than 500 words, please provide a brief description of the contract delivered including evidence as to your technical capability in this market.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Contact 2
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <textarea name="Contact2" trim='blur' OnlyAlphaNumeric  [disabled]="disabled" maxlength="200" [(ngModel)]="account.contact2" rows="3" cols="111"></textarea>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide details of your 2rd contract reference.  Your response should include:
+
+      a. Client name
+      b. Contact name
+      c. Position of contact in organisation  
+      d. Email address of contact 
+      e. Contract start date
+      f. Contract status (current / finished / terminated)
+      g. Estimated contract Value
+      h. In no more than 500 words, please provide a brief description of the contract delivered including evidence as to your technical capability in this market.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Contact 3</div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <textarea name="Contact3" trim='blur' OnlyAlphaNumeric [disabled]="disabled" maxlength="200" [(ngModel)]="account.contact3" rows="3" cols="111"></textarea>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide details of your 3rd contract reference.  Your response should include:
+
+      a. Client name
+      b. Contact name
+      c. Position of contact in organisation  
+      d. Email address of contact 
+      e. Contract start date
+      f. Contract status (current / finished / terminated)
+      g. Estimated contract Value
+      h. In no more than 500 words, please provide a brief description of the contract delivered including evidence as to your technical capability in this market.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Quality Standards
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown placeholder=" Select one" [disabled]="disabled" [(ngModel)]="account.qualityStandards" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Does your organisation have any quality standards, systems, assurance processes and policies relating to your organisation and its services or goods and any related certifications?
+        "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="account.qualityStandards">
+      <div class="col-sm-3 mt15 text-right"> If Yes, please provide details
+
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" maxlength="500" [disabled]="disabled" [(ngModel)]="account.otherQualityStandards" name="qstandtd" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the total number of your staff providing goods and/or services relating to the main business activities of your company.
+          "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Policies
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled"  placeholder=" Select one" [(ngModel)]="account.policies" [options]="tempDropdown"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Does your organisation have any of the following policies?
+
+      a. Labour Standards Policy 
+      b. Ethics Policy
+      c. Sustainability Policy
+      d. Environmental Policy
+      "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="account.policies">
+      <div class="col-sm-3 mt15 text-right">If Yes, please upload a copy of any relevant documents
+
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <div class="ui-inputgroup" *ngIf="this.vendorRegisterModel.id === 0">
+          <input type="text" OnlyAlphaNumeric  [disabled]="disabled" [(ngModel)]="fileCompanyProfile.attachmentName" pInputText placeholder="Select a file">
+          <span class="ui-inputgroup-addon uploadBtnAddon">
+            <input #file [disabled]="disabled" class="productUpload" type="file" (change)="upload(file.files , 'PolicyAttachment')" />
+            <button class="browseBtn">Browse</button>
+          </span>
+        </div>
+        <a *ngIf="roleId === 1 || roleId === 2" target="_blank" href="{{fileCompanyProfile.attachmentName}}">
+          {{fileCompanyProfile.fileName|truncate:50}}
+        </a>
+      </div>
+      <!-- <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please upload a copy of your company profile."></i> -->
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Other Relevant Information (Optional)</div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select one" [options]="tempDropdown" [(ngModel)]="account.otherRelevantInfo"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the name of the group or ultimate holding company and any other subsidiaries along with the relationship to the tendering company. 
+      "></i>
+    </div>
+
+    <div class="row mt15" *ngIf="account.otherRelevantInfo">
+      <div class="col-sm-3 mt15 text-right">Other Relevant Information(Optional)
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphaNumeric   trim="blur" [disabled]="disabled" maxlength="1000" [(ngModel)]="account.otherRelevantInfoYes" name="otherRelevant"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the total number of your staff providing goods and/or services relating to the main business activities of your company.
+            "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Declaration
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <p-dropdown [disabled]="disabled" placeholder=" Select one" [options]="tempDropdown" [(ngModel)]="account.declaration"></p-dropdown>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="I am authorised by the registering Organisation to supply the information given in this Supplier Registration Questionnaire.
+      I declare that to the best of my knowledge the answers submitted to these questions are correct.  I understand that the information will be used in the selection process to assess my organisation’s suitability to be invited to participate in procurement opportunities with the Customer, and I am making this declaration on behalf of my Company.
+       The Customer Organisation has our permission to:    
+     "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Name
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.declarationName" name="declareName" pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the full name of the person completing this questionnaire.
+      "></i>
+    </div>
+
+    <div class="row mt15">
+      <div class="col-sm-3 mt15 text-right">Position
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-7  col-xs-10  mt15">
+        <input type="text" OnlyAlphabets   trim="blur" [disabled]="disabled" maxlength="50" [(ngModel)]="account.declarationPosition" name="declarePosition"
+          pinputtext>
+      </div>
+      <i class="fa col-sm-2 col-xs-2 fa-question-circle   toolTip" pTooltip="Please provide the position (job title) of the person completing this questionnaire.
+      "></i>
+    </div>
+  </div>
+</div>

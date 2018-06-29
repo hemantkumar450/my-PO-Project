@@ -1,0 +1,9 @@
+.padding-b-1{
+    padding-bottom:1em
+}
+.image-size {
+    width: 50px;
+    height: 34px;
+    max-width: 50px;
+    max-height: 34px;
+}

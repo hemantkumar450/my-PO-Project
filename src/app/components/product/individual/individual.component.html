@@ -1,0 +1,112 @@
+<div class="productViewWrapper">
+  <div class="container">
+    <!-- overlay Panel Starts here -->
+    <p-overlayPanel #overlayPanel [showCloseIcon]="true" class="overlayPanelWrapper">
+      <img [src]="headImage" style="max-width: 100%; height: auto;">
+    </p-overlayPanel>
+    <!-- overlay Panel Ends here -->
+    <div class="productDetail">
+      <div class="row ">
+        <div class="col-sm-6 mb15">
+          <div class="productBigImg">
+            <img height="250" style="cursor: pointer;" [src]="headImage" (click)="overlayPanel.toggle($event)">
+          </div>
+
+          <div class="sliderthumbnails">
+            <ul>
+              <li *ngFor="let image of images; let index=index">
+                <img height="60" (click)="showProductImage($event)" src={{image}}>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+        <div class="col-sm-6 mb15">
+          <div class="producttype">{{vendorProduct.productCode}} {{vendorProduct.productName}}</div>
+          <div class="productTag">AED {{vendorProduct.productPrice}}</div>
+          <div class="productSummary">{{vendorProduct.productDesc}}</div>
+
+          <div class="controlSec">
+            <button class="addToCart" (click)="addToCart()">Add to Cart
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button>
+            <button class="addToCart" (click)="setProductCompare()">Compare
+              <i class="fa fa-exchange" aria-hidden="true"></i>
+            </button>
+
+
+            <!-- <a (click)="setProductCompare()">
+              <img src="../../../../assets/images/arrow.PNG">
+            </a> -->
+          </div>
+
+          <div class="vendordetail">
+            <div>Vendor: {{vendorProduct.vendor.vendorName}}</div>
+            <div>Supplier by Area : {{vendorProduct.vendor.city}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <p-tabView>
+      <p-tabPanel header="Product Info">
+          <ng-template pTemplate="content">
+              <div class="scrollDv">
+                  <p-scrollPanel #scollPanle [style]="{width: '100%', height:'200px'}">
+              <table class="table">
+          <tbody>
+            <tr *ngFor="let property of vendorProduct.productProperties">
+              <td>{{property.propertyKey}}</td>
+              <td>{{property.propertyValue}}</td>
+            </tr>
+          
+          </tbody>
+        </table>
+      </p-scrollPanel>
+      </div>
+</ng-template>
+      </p-tabPanel>
+      <p-tabPanel header="Vendor Info">
+         <div class="scrollDv">
+            <p-scrollPanel #scollPanle [style]="{width: '100%', height:'200px'}">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td>Vendor Name</td>
+              <td>{{vendorProduct.vendor.vendorName}}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{{vendorProduct.vendor.city}}</td>
+            </tr>
+            <tr>
+              <td>Email-Id</td>
+              <td>{{vendorProduct.vendor.email}}</td>
+            </tr>
+            <tr>
+              <td>Mobile No</td>
+              <td>{{vendorProduct.vendor.mobileNo}}</td>
+            </tr>
+            <tr>
+              <td>Company Owner</td>
+              <td>{{vendorProduct.vendor.companyOwner}}</td>
+            </tr>
+            <tr>
+              <td>Company Website</td>
+              <td>{{vendorProduct.vendor.webSite}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </p-scrollPanel>
+      </div>
+      </p-tabPanel>
+
+    </p-tabView>
+  
+    <div class="relatedPdcts">
+      <app-product-related-list *ngIf="relatedList.length>0" [relatedList]="relatedList"></app-product-related-list>
+    </div>
+  </div>
+</div>

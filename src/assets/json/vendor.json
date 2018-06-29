@@ -1,0 +1,24 @@
+{
+  "data": {
+    "header": [
+      {"field": "VendorName"  , "header":"VendorName" },
+      {"field":"Address1" , "header":"Address1"},
+      {"field":"Address2" , "header":"Address2"},
+      {"field":"City","header":"City"},
+      {"field":"ZipCode","header":"ZipCode"},
+      {"field": "Email"  , "header":"Email" },
+      {"field":"MobileNo","header":"MobileNo"} 
+    ],
+    "data": [{
+        "VendorName": "Ruby Sani",
+        "Address1":"abc",
+        "Address2":"xyz",
+        "City":"Dubai",
+        "ZipCode":"123456",
+        "Email": "abc@gmail.com",
+        "MobileNo": "1234567890"
+      }
+    
+    ]
+  }
+}

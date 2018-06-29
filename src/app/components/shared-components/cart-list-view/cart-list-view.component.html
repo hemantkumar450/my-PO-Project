@@ -1,0 +1,41 @@
+<div class="clearfix">
+    <div class="cartCaontainer cartViewContainer">
+        <p-dataTable [value]="purchaseOrders" [responsive]="true">
+
+            <p-column field="productName" header="Product Name" [style]="{'width':'250px'}">
+                <!-- <ng-template let-col let-car="rowData" let-ri="rowIndex" pTemplate="body">
+                    <div class="productTitle">{{car[col.field]}}</div>
+                </ng-template> -->
+            </p-column>
+            <p-column field="productPrice" header="Price">
+                <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                    <span>{{item.productPrice | number:'0.2-5'}}</span>
+                </ng-template>
+            </p-column>
+            <p-column field="totalPrice" header="TotalPrice">
+                <ng-template let-col let-item="rowData" let-ri="rowIndex" pTemplate="body">
+                    <span> {{item.totalPrice | number:'0.2-5'}}</span>
+                </ng-template>
+            </p-column>
+            <p-column field="quantity" header="Quantity" [style]="{'width':'90px'}">
+                <!-- <ng-template let-col let-item="rowData" pTemplate="body">
+                    <span>{{item.qty}}</span5
+                </ng-template> -->
+            </p-column>
+            <p-column header="Charge Account">
+                <ng-template let-col let-row="rowData" pTemplate="body">
+               
+                    <div style="padding-right: 15px; border-right: 1px solid #ccc">
+                    <p-dropdown scrollHeight="70px" [options]="POcharges" appandTo='body' [(ngModel)]="row.chargeAccountId" (ngModelChange)="onChargeAccountSelect(row)" placeholder="select"
+                        filter="false"></p-dropdown></div>
+
+                </ng-template>
+            </p-column>
+
+        </p-dataTable>
+
+
+
+
+    </div>
+</div>

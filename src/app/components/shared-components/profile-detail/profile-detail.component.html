@@ -1,0 +1,179 @@
+<h3>{{header}}</h3>
+<div class="profileContent">
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right">
+            First Name
+            <i class="fa fa-asterisk"></i>
+        </div>
+        <div class="col-sm-7">
+            <input pInputText OnlyAlphaNumeric trim="blur" [(ngModel)]="profileModel.firstName" maxlength="50">
+        </div>
+
+    </div>
+
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right">
+            Middle Name
+        </div>
+        <div class="col-sm-7">
+            <input pInputText OnlyAlphaNumeric trim="blur" [(ngModel)]="profileModel.middleName" maxlength="50">
+        </div>
+
+    </div>
+
+
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right">
+            Last Name
+            <i class="fa fa-asterisk"></i>
+        </div>
+        <div class="col-sm-7">
+            <input pInputText OnlyAlphaNumeric trim="blur" [(ngModel)]="profileModel.lastName" maxlength="50">
+        </div>
+
+    </div>
+
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right">
+            Email Id
+            <i class="fa fa-asterisk"></i>
+        </div>
+        <div class="col-sm-7">
+            <input pInputText [(ngModel)]="profileModel.email" trim="blur" maxlength="200">
+        </div>
+
+    </div>
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right">
+            Phone No
+        </div>
+        <div class="col-sm-7">
+            <input pInputText OnlyNumber="true" trim="blur" [(ngModel)]="profileModel.contactNo" maxlength="10">
+        </div>
+
+    </div>
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right"> Address </div>
+        <div class="col-sm-7">
+            <textarea [(ngModel)]="profileModel.address" trim="blur" OnlyAlphaNumeric maxlength="500"></textarea>
+        </div>
+
+    </div>
+
+
+    <div class="row mb30">
+        <div class="col-sm-3 col-md-2 text-right">Gender
+            <i class="fa fa-asterisk"></i>
+        </div>
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-sm-3">
+                    <p-radioButton name="group1" value="0" label="Male" [(ngModel)]="profileModel.gender" inputId="opt1"></p-radioButton>
+                </div>
+                <div class="col-sm-3">
+                    <p-radioButton name="group1" value="1" label="Female" [(ngModel)]="profileModel.gender" inputId="opt2"></p-radioButton>
+                </div>
+                <div class="col-sm-5">
+                    <p-radioButton name="group1" value="2" label="Prefer Not to Mention" [(ngModel)]="profileModel.gender" inputId="opt3"></p-radioButton>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-sm-3 col-md-2 text-right"> Upload Photo </div>
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-sm-4 mb30" *ngIf="userRoleId === 4 || userRoleId === 3 || rolePermission.canEdit || rolePermission.roleId===1">
+                            <span class="uploadFile">
+                                <i class="fa fa-plus"></i>
+                                <input #file class="productUpload" type="file" (change)="onFileSelect(file.files)" accept="image/x-png,image/gif,image/jpeg" />
+                            </span>
+                        </div>
+                        <div class="col-sm-4 mb30" *ngIf="profileModel.attachmentUrl !==''">
+                            <img class="" src={{profileModel.attachmentUrl}} width="120" height="60">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb30 clearfix" *ngIf="isAdmin && path != 'edit-profile'">
+        <div class="col-sm-3 col-md-2 text-right"> 
+            Role 
+            <i class="fa fa-asterisk" *ngIf="profileModel.id ==0"></i>
+
+        </div>
+        <div class="col-sm-7 roleRow">
+            <p-dropdown #dd [options]="roles" [hidden]="isRoleDDoDisabled" [(ngModel)]="selectedRoleId" filter="true"></p-dropdown>
+        </div>
+        <div class="col-sm-7" *ngIf="isRoleDDoDisabled">
+            {{profileModel.roleName}}
+
+        </div>
+        <div class="mt15 mb15 clearfix" *ngIf="isAdmin ">
+            <div class="col-sm-3 col-md-2 text-right">
+
+            </div>
+            <div class="col-sm-9  col-sm-offset-2 mt10">
+                <div *ngIf="selectedRoleId==2">
+                    <p-dataTable [value]="userPermissions">
+                        <p-column field="moduleName" header="Module Name" [style]="{'width':'200px','text-align':'center'}"></p-column>
+                        <p-column field="userName" header="Is Visible" [style]="{'text-align':'center'}">
+
+                            <ng-template style="width:50px" let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+                                <input type="checkbox" *ngIf="row.showVisible" [(ngModel)]="row.isVisible" (ngModelChange)="onRoleChange(row , 'isVisible')"
+                                />
+                            </ng-template>
+                        </p-column>
+                        <p-column field="userName" header="Can View" [style]="{'text-align':'center'}">
+
+                            <ng-template style="width:50px" let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+                                <input type="checkbox" *ngIf="row.showView" [(ngModel)]="row.canView" (ngModelChange)="onRoleChange(row , 'canView')" />
+
+                            </ng-template>
+                        </p-column>
+                        <p-column field="userName" header="Can Add" [style]="{'text-align':'center'}">
+
+                            <ng-template style="width:50px" let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+                                <input type="checkbox" *ngIf="row.showAdd" [(ngModel)]="row.canAdd" (ngModelChange)="onRoleChange(row ,  '')" />
+
+                            </ng-template>
+                        </p-column>
+                        <p-column field="userName" header="Can Edit" [style]="{'text-align':'center'}">
+
+                            <ng-template style="width:50px" let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+                                <input type="checkbox" *ngIf="row.showEdit" [(ngModel)]="row.canEdit" (ngModelChange)="onRoleChange(row , '')" />
+
+                            </ng-template>
+                        </p-column>
+                        <p-column field="userName" header="Can Approve" [style]="{'text-align':'center'}">
+                            <ng-template style="width:50px" let-col let-row="rowData" let-ri="rowIndex" pTemplate="body">
+                                <input type="checkbox" *ngIf="row.showApprove" [(ngModel)]="row.canApprove" (ngModelChange)="onRoleChange(row, '')" />
+
+                            </ng-template>
+                        </p-column>
+
+                    </p-dataTable>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt15 clearfix">
+        <div class="col-sm-3 col-md-2 text-right">
+
+        </div>
+        <div class="col-sm-4 col-xs-6 mb15" *ngIf="isShowCancelButton">
+            <button class="btnYellow" (click)="onCancel()">Back to list</button>
+        </div>
+
+        <div class="col-sm-4 col-xs-6 mb15" *ngIf="userRoleId === 4 || userRoleId === 3 || rolePermission.canAdd || rolePermission.canEdit || rolePermission.roleId === 1">
+            <button class="btnYellow" (click)="onSave()">Save</button>
+        </div>
+    </div>
+</div>

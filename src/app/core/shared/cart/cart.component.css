@@ -1,0 +1,35 @@
+.cart{
+    color: #fff;
+    font-size: 15px;
+    height: 44px; border-radius: 5px; background-color: #55555b;
+}
+.itemsCount{
+margin: 0 6px;
+font-size: 15px;
+line-height: 24px;
+color: rgb(0,0,0);
+text-align: center;
+width: 23px;
+ height: 23px; 
+ border-radius: 50%;
+ display: inline-block;
+ background-color: #fdd933;
+}
+.cart:hover,.cart:focus{
+    transform: none;
+}
+.cart i{
+    font-size: 18px;
+}
+.cartContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+@media only screen and (max-width: 766px) {
+.cartContainer{
+        justify-content: center;
+    }}
+    /deep/.ui-chkbox .ui-chkbox-icon:focus {
+        font-size: inherit;
+        color: #000;
+    }    

@@ -1,0 +1,61 @@
+
+
+
+.profileContent{
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0
+}
+
+.uploadFile{
+    width: 100px;
+    height: 60px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.uploadFile i{
+    font-size: 35px;
+    font-weight: 300;
+    color: #ccc;
+    -webkit-text-stroke: 4px white;
+    -moz-text-stroke: 4px white;
+    -ms-text-stroke: 4px white;
+    -o-text-stroke: 4px white;
+      text-stroke: 4px white;
+}
+.productUpload{
+    position: absolute;
+    height: 60px;
+    left: 0;
+    top: 0%;
+    width: 100%;
+    opacity: 0;
+}
+/deep/.ui-fileupload-choose{
+    height: 100%;
+    width: 100%;
+}
+h3{
+    font-size: 24px;
+    margin-top: 0;
+}
+
+/deep/.ui-radiobutton-label{
+    margin-left: 4px;
+    color: #333;
+    vertical-align: text-top;
+    font-weight: 400;
+}
+
+/deep/.ui-dropdown .ui-dropdown-trigger .fa{
+    color: #333;
+    margin-top: 6px;
+}
+
+
+.roleRow  /deep/.ui-dropdown .ui-dropdown-trigger .fa{
+    margin-top: 6px;
+}

@@ -1,0 +1,64 @@
+<h3>
+  Dashboard</h3>
+
+<div class="row mb15" *ngIf="userRoleId ===1 || userRoleId ===2">
+  <div class="col-sm-6">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.totalProduct}}</div>
+      <div class="productsName" style="cursor: pointer;" (click)="totalProduct()">Total Products</div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.totalVendor}}</div>
+      <div class="productsName" style="cursor: pointer;"  (click)="totalVendor()">Total Vendors</div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.pendingVendorProductApproval}}</div>
+      <div class="productsName" style="cursor: pointer;" (click)="pendingVendor()">Pending Vendor Product Approval</div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="dashBoardChart mb15">
+      <p-chart #chart type="pie" height="300" (onDataSelect)="selectData($event)" [responsive]="false" [data]="data" [options]="options"></p-chart>
+    </div>
+  </div>
+</div>
+
+<div class="row mb15" *ngIf="userRoleId ===4">
+  <div class="col-sm-6">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.totalProduct}}</div>
+      <div class="productsName">Total Products</div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.totalLinkProduct}}</div>
+      <div class="productsName" style="cursor: pointer;" (click)="linkedProduct()">Linked Products</div>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="dashBoardChart mb15">
+      <p-chart #chart type="pie" height="300" [responsive]="false" (onDataSelect)="selectData($event)" [data]="data" [options]="options"></p-chart>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mb15" *ngIf="userRoleId ===3">
+  <div class="col-sm-6">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.totalProductInCart}}</div>
+      <div class="productsName"  style="cursor: pointer;"  (click)="productInCart()">Products in cart</div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="dashboardItemBox">
+      <div class="productsCount">{{dashboardData.totalRFQ}}</div>
+      <div class="productsName" style="cursor: pointer;"  (click)="generateRFQ()">Generate RFQ's</div>
+    </div>
+  </div>
+</div>

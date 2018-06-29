@@ -1,0 +1,224 @@
+<div class="row mt15 mb15">
+  <div class="col-sm-12">
+    <div class="clearfix flexdv">
+
+      <div class="col-sm-5 mt15 mb15 pd0">
+        <div class="form-group col-lg-11" style="padding-left: 13px">
+
+          <!--                        Attachment start                             -->
+
+          <label class="control-label">Attachment</label>
+          <div class="smart-form">
+            <div class="input input-file" *ngIf="roleId!==2">
+
+              <span class="button">
+                <input id="file" [disabled]="isDisabled" name="file" type="file" #fileInput placeholder="Upload file..." (click)="onClickFile($event)"
+                  (change)="onAttachmentSelect($event)" accept="image/*">Browse
+              </span>
+
+              <input placeholder="Select one image" readonly="" type="text">
+            </div>
+
+            <div class="input input-file" *ngIf="roleId === 2 
+                  && cmsPermission.canEdit === true">
+
+              <span class="button">
+                <input id="file" [disabled]="isDisabled" (click)="onClickFile($event)" name="file" type="file" #fileInput placeholder="Upload file..."
+                  (change)="onAttachmentSelect($event)" accept="image/*">Browse
+              </span>
+
+              <input placeholder="Select one image" readonly="" type="text">
+            </div>
+          </div>
+          <!--                        Attachment end                             -->
+
+          <!--                        show Attachment                             -->
+
+          <div class="show-context" *ngIf="cmsDetail.attachments && cmsDetail.attachments.length > 0 ">
+            <div *ngFor="let file of cmsDetail.attachments; let i = index;">
+              <div class="ui-fileupload-row col-lg-12 border-col" *ngIf="file.isDeleted === false" [ngStyle]="{'background-color':i % 2 === 0 ?'#EDEDED':'white'}">
+                <div class="col-md-10" style="padding-top:10px">
+
+                  <div class="col-md-3" style="padding:0px">
+
+                    <img class="image-size" src="{{file.attachmentUrl}}" />
+
+                  </div>
+
+                  <div class="col-md-9" style="max-width: 100%">
+
+                    <a href="{{file.attachmentUrl}}" target="__blank" style="max-width: 100%;word-wrap: break-word;">{{file.attachmentName | truncate:10}}</a>
+                  </div>
+                </div>
+
+                <div class="col-md-2 m-t-10" style="    padding: 20px 0px 0px 0px;" *ngIf="roleId!==2">
+                  <span class="ui-button-icon-left ui-c fa fa-fw fa-close remove-icon" style="cursor: pointer;" (click)="remove(file)"></span>
+                </div>
+                <div class="col-md-2 m-t-10" style="    padding: 20px 0px 0px 0px;" *ngIf="roleId === 2 
+                      && cmsPermission.canEdit === true">
+                  <span class="ui-button-icon-left ui-c fa fa-fw fa-close remove-icon" style="cursor: pointer;" (click)="remove(file)"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--                        show attachment end                             -->
+        </div>
+
+      </div>
+      <div class="col-sm-1" style="position:relative">
+        <div class="seprator"></div>
+      </div>
+
+      <div class="col-sm-6 mt15 mb15 pd0" style="text-align: center;">
+
+
+        <button class="cart" (click)="onShowProducts()" *ngIf="roleId!==2" class="btnYellow" style="width:auto">
+          <span class="countId">Add Vendor</span>
+        </button>
+        <button class="cart" (click)="onShowProducts()" *ngIf="roleId === 2 
+              && cmsPermission.canEdit === true" class="btnYellow" style="width:auto">
+          <span class="countId">Add Vendor</span>
+        </button>
+        <div class="col-sm-12 mt15 mb15 pd0" style="text-align: center;">
+          <!--                        show selected vendor list                            -->
+          <div class="col-sm-12 vendorDetail show-context">
+            <ng-template ngFor let-category [ngForOf]=" cmsDetail.vendors ">
+              <div class="col-sm-4 pd0" *ngIf="category.isfinallySubmitted == true">
+                <div class="col-sm-12 pd0">
+                  <div *ngIf="roleId!==2">
+                    <i class="fa fa-close float-r " style="    background: black;margin: 3px;color:white" (click)="onPressDelete(category)"></i>
+                  </div>
+                  <div *ngIf="roleId === 2 
+                       && cmsPermission.canEdit === true">
+                    <i class="fa fa-close float-r " style="    background: black;margin: 3px;color:white" (click)="onPressDelete(category)"></i>
+                  </div>
+                </div>
+                <div class=" text-align-l chip-tab m-1">
+                  <div>
+                    <div style="height:100px">
+                      <img src="{{category.vendorLogo}}" style="max-height:100%;max-width:100%;height:90px" />
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class=" text-align-l chip-tab m-1" style="margin-bottom:10px;    margin-bottom: 10px;
+    border-top: none;
+    margin-top: -1px;">
+                  <div>
+                    <div>
+                      <div>
+                        {{category.vendorName | truncate:10}}
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+          <!--                        end dendor list                             -->
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<p-dialog header="Product List" responsive="true" autoAlign="true" positionTop="0" [(visible)]="showContent" height="auto"
+  width="1000" [contentStyle]="{'max-height':'auto'}">
+
+  <div class="row mt15 mb15">
+
+
+    <div class="col-sm-12">
+      <div class="clearfix flexdv">
+        <div class="col-sm-6 mt15 mb15 pd0" style="text-align: center;">
+
+
+          <p-dataTable [value]="vendors" [responsive]="true" [paginator]="false" [pageLinks]="3" [rows]="pageSize" [responsive]="true"
+            (onFilter)="onFiltering($event)">
+            <p-column field="vendorName" header="Vendor Name" [filter]="true" filterPlaceholder="Search"></p-column>
+            <p-column field="contactPersonName" header="contact Person Name" filterPlaceholder="Search"></p-column>
+            <p-column field="city" header="City" [filter]="true" filterPlaceholder="Search"></p-column>
+
+
+            <p-column header="Action" [style]="{'width':'60px', 'text-align':'center'}">
+              <ng-template style="width:50px" let-col let-vendor="rowData" let-ri="rowIndex" pTemplate="body">
+
+                <p-checkbox [(ngModel)]="vendor.isChecked" (click)="onClickVendorFromVendorList(vendor)" binary="true"></p-checkbox>
+
+              </ng-template>
+            </p-column>
+
+          </p-dataTable>
+          <div class="clearfix" style="background: #eef0f3;padding: 10px 0;">
+            <div class="col-xs-6 paginator" *ngIf="totalRecords>pageSize">
+              <p-paginator [rowsPerPageOptions]="[10,20,30]" [hidden]="totalRecords<pageSize" [rows]="pageSize" [totalRecords]="totalRecords"
+                (onPageChange)="pageChanged($event)"></p-paginator>
+            </div>
+            <div class="col-xs-6" style="padding-top: 10px;" *ngIf="totalRecords>pageSize">
+              <div class="row">
+                <div class="col-xs-6">
+                  <div class="col-sm-6" style="padding-top: 4px;text-align: right;padding-right: 0; font-size: 12px;">
+                    <span>Jump to page</span>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="ui-inputgroup">
+                      <input style="width: 100%" type="text" OnlyNumber="true" name="pageNo" [(ngModel)]="pageNo" placeholder="Page No" id="pageNo">
+                      <span class="ui-inputgroup-addon" (click)="onPageEvent()">
+                        <i class="fa fa-fw fa-angle-right"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-xs-3" style="padding: 0">
+                  <div class="text-right" style="margin-top: 5px">Total Pages: {{totalPages}}</div>
+                </div>
+                <div class="col-xs-3" style="padding: 0px 20px 0px 0px;">
+                  <div class="text-right" style="margin-top: 5px">| Total Records: {{totalRecords}}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 paginator" *ngIf="totalRecords<pageSize">
+              <div class="col-xs-9"></div>
+              <div class="col-xs-3">
+                <div class="text-right" style="margin-top: 5px">Total Records: {{totalRecords}}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-1" style="position:relative">
+          <div class="seprator"></div>
+        </div>
+
+
+        <div class="col-sm-5 mt15 mb15 pd0" style="text-align: center;    ">
+
+          <div class="col-sm-12 vendorDetail ">
+            <ng-template ngFor let-category [ngForOf]=" cmsDetail.vendors" let-i="index">
+              <div class="col-sm-12 text-align-l " *ngIf="category.isChecked== true" [ngStyle]="{'background-color':i % 2 === 0 ?'#EDEDED':'white'}">
+                <div> {{category.vendorName}}
+                  <i class="fa fa-close float-r" (click)="onCloseVendor(category)"></i>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <p-footer>
+    <button style="height: 30px;    margin-right: 15px;" (click)="showContent = false" class="btnYellow">Cancel</button>
+    <button style="height: 30px;" (click)="submitVendor()" class="btnYellow">Submit</button>
+  </p-footer>
+</p-dialog>

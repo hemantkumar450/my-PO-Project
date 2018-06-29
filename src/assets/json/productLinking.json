@@ -1,0 +1,20 @@
+{
+  "data": {
+    "header": [
+      {"field":"VendorName" , "header":"VendorName"},
+      {"field": "ProductName"  , "header":"ProductName" },    
+      {"field":"ProductDesc","header":"ProductDesc"} ,
+      {"field":"ProductPrice","header":"ProductPrice"} ,
+      {"field": "UOMCode"  , "header":"UOMCode" }
+    ],
+    "data": [{
+        "ProductName": "jacket",
+        "VendorName":"Sani",
+        "UOMCode":"abc",
+        "ProductDesc":"xyz",
+        "ProductPrice":"1000"
+      }
+    
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "data": {
+    "header": [
+      {"field": "FirstName"  , "header":"FirstName" },
+      {"field":"LastName" , "header":"LastName"},
+      {"field": "Email"  , "header":" Email" },
+      {"field":"ContactNo","header":"ContactNo"} 
+    ],
+    "data": [{
+        "FirstName": "Ruby",
+        "LastName":"Sani",
+        "Email":"xyz@gmail.com",
+        "ContactNo":"123456"
+      }
+    
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h3 style="margin: 5px;">RFQ's</h3>
+  </div>
+  <div class="col-sm-4" *ngIf="userRfq">
+    <button class="browseBtn pull-right" (click)="addRequest('add-rfq')" style="background-color: #FDD933;">Request For Quote</button>
+  </div>
+</div>
+<div class="mt15 mb30">
+  <p-dataTable [value]="rfqList" [paginator]="false" [pageLinks]="3" [rows]="pageSize" [responsive]="true" (onSort)="onSorting($event)"
+    (onFilter)="onFiltering($event)">
+    <p-column [filter]="true" field="rfqNo" header="RFQ No" [style]="{'width':'100px', 'text-align':'center'}">
+      <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+        <div>
+          <a style="cursor: pointer;" (click)="onClickRfq(data)">{{data.rfqNo}}</a>
+        </div>
+      </ng-template>
+    </p-column>
+    <p-column [filter]="true" field="quoteName" header="Quote Name" [style]="{'width':'100px', 'text-align':'center'}">
+      <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+        <div>{{data.quoteName | truncate:100}}</div>
+      </ng-template>
+    </p-column>
+    <p-column [filter]="true" field="message" header="Message" [style]="{'max-height':'100px','width':'100px'}">
+      <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+        <div class="productTitle" style="cursor: pointer;" *ngIf="vendorRfq" [innerHTML]="data.message| truncate : 500"></div>
+        <div class="productTitle" *ngIf="userRfq" [innerHTML]="data.message| truncate : 500"></div>
+      </ng-template>
+    </p-column>
+    <p-column [filter]="true" field="deadline" header="Dead Line" [style]="{'width':'100px', 'text-align':'center'}">
+      <ng-template let-col let-data="rowData" let-ri="rowIndex" pTemplate="body">
+        <div>{{data.deadline | date : "short"}}</div>
+      </ng-template>
+    </p-column>
+    <p-column field="statusName" header="Status" [style]="{'max-height':'100px','width':'100px'}">
+      <ng-template pTemplate="header" let-columns>
+        <div>Status</div>
+        <p-dropdown [options]="status" [(ngModel)]="statusRfq" appandTo='body' (ngModelChange)="getRfqStatusFilter($event)"></p-dropdown>
+      </ng-template>
+    </p-column>
+  </p-dataTable>
+
+  <div class="clearfix" style="background: #eef0f3;padding: 10px 0;">
+    <div class="col-xs-6 paginator" *ngIf="totalRecords>pageSize">
+      <p-paginator [rowsPerPageOptions]="[10,20,30]" [hidden]="totalRecords<pageSize" [rows]="pageSize" [totalRecords]="totalRecords"
+        (onPageChange)="pageChanged($event)"></p-paginator>
+    </div>
+    <div class="col-xs-6" style="padding-top: 10px;" *ngIf="totalRecords>pageSize">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="col-sm-6" style="padding-top: 4px;text-align: right;padding-right: 0; font-size: 12px;">
+            <span>Jump to page</span>
+          </div>
+          <div class="col-sm-6">
+            <div class="ui-inputgroup">
+              <input style="width: 100%" type="text" OnlyNumber="true" name="pageNo" [(ngModel)]="pageNo" placeholder="Page No" id="pageNo">
+              <span class="ui-inputgroup-addon" (click)="onPageEvent()">
+                <i class="fa fa-fw fa-angle-right"></i>
+              </span>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-xs-3" style="padding: 0">
+          <div class="text-right" style="margin-top: 5px">Total Pages: {{totalPages}}</div>
+        </div>
+        <div class="col-xs-3" style="padding: 0px 20px 0px 0px;">
+          <div class="text-right" style="margin-top: 5px">| Total Records: {{totalRecords}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 paginator" *ngIf="totalRecords<pageSize">
+      <div class="col-xs-9"></div>
+      <div class="col-xs-3">
+        <div class="text-right" style="margin-top: 5px">Total Records: {{totalRecords}}</div>
+      </div>
+    </div>
+  </div>
+</div>

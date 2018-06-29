@@ -1,0 +1,148 @@
+<div class="clearfix">
+  <div class="col-sm-12" style="padding:0px">
+    <h3 style="margin-top: 0">Request a Quote</h3>
+  </div>
+</div>
+
+<div class="">
+
+
+  <div class="requestQuoteContentWrapper clearfix">
+    <div class="col-sm-6 mb30">
+      <label>Name of quote
+        <i class="fa fa-asterisk" aria-hidden="true"></i>
+      </label>
+      <input type="text" maxlength="100" [(ngModel)]="requestQuotes.quoteName" pInputText placeholder="">
+
+    </div>
+    <div class="col-sm-6 mb30">
+      <label>Deadline
+        <i class="fa fa-asterisk" aria-hidden="true"></i>
+      </label>
+      <div class="input-group">
+        <p-calendar [style]="{'width':'100%'}" appendTo="body" [minDate]="dateTime" [showTime]="true" [monthNavigator]="true" [yearNavigator]="true" [(ngModel)]="requestQuotes.deadline"
+          yearRange="1950:2030" hourFormat="12"></p-calendar>
+        <div class="input-group-addon">BST</div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 mb30">
+      <label>Detail to include with the invidation message
+        <i class="fa fa-asterisk" aria-hidden="true"></i>
+      </label>
+      <!-- <p-editor [(ngModel)]="requestQuotes.message" [style]="{'height':'320px'}"></p-editor> -->
+     
+      <div  [froalaEditor]="options" [(froalaModel)]="requestQuotes.message"></div>
+    </div>
+    <div class="clearfix">
+    <div class="col-sm-12 mb30">
+
+      <div class="col-sm-7 col-xs-12 mb30">
+        <div class="mb15">
+          <p-checkbox binary="true" label="I also want to include documents" (onChange)="onCheckIncludeDocument()" [(ngModel)]="isIncludeDocumentCheck"></p-checkbox>
+        </div>
+        <div class="row" *ngIf="isIncludeDocumentCheck">
+          <div class="col-sm-12 mb10">
+            <label>File to include</label>
+            <!-- <i class="fa fa-asterisk" aria-hidden="true"></i> -->
+          </div>
+          <div class="dropzone">
+            <div class="col-sm-12 mb10">
+              <label for="inputFile">File Upload
+                <input #fileInput type="file" multiple class="form-control-file text-primary font-weight-bold" id="inputFile" (change)="onAttachmentSelect(this)"
+                  data-title="Drag and drop a file">
+              </label>
+
+            </div>
+          </div>
+        </div>
+        <div class="uploadDocContainer clearfix mb30" *ngIf="checkIsCheckedAttachment()">
+          <p-scrollPanel [style]="{height: '200px'}">
+            <div class="vendorChips">
+              <span *ngFor="let attachment of requestQuotes.rfqAttachments">
+                <div class="chipItem" *ngIf="attachment.isDeleted === false">
+
+                  <a href="{{attachment.attachmentUrl}}" target="__blank">
+                    {{attachment.attachmentName | truncate:20}}</a>
+                  <i class="fa fa-remove" (click)="deleteAttachment(attachment)"></i>
+                </div>
+
+              </span>
+            </div>
+          </p-scrollPanel>
+        </div>
+        <div class="mb15">
+          <p-checkbox binary="true" label="I want to get prices" [(ngModel)]="isPriceSelected" (onChange)="onPriceSelected()"></p-checkbox>
+        </div>
+        <div class="row mb30" *ngIf="isPriceSelected">
+          <div class="col-sm-12 mb10">
+            <label>What prices are required?</label>
+            <!-- <i class="fa fa-asterisk" aria-hidden="true"></i> -->
+          </div>
+          <div class="col-sm-12 mb10" style="padding-left:0px" *ngFor="let question of requestQuotes.rfqItems;let index = index">
+            <div class="col-sm-5">
+              <input type="text" placeholder="Name of item" maxlength="100" [(ngModel)]="question.itemName" pInputText >
+            </div>
+            <div class="col-sm-3">
+              <p-dropdown placeholder="Unit" filter="true" [(ngModel)]="question.uomId" [options]="unitOfMeasurement "></p-dropdown>
+
+            </div>
+            <div class="col-sm-3 col-xs-10 mb10">
+              <input type="text" placeholder="Quantity" maxlength="100" OnlyDecimalNumber="true" [(ngModel)]="question.quantity" pInputText>
+            </div>
+            <div class="col-sm-1 col-xs-2 mb10 icon-padding" (click)="deleteRfqItem(index)" *ngIf="index > 0">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+
+          </div>
+          <div class="mb10">
+            <button class="btnYello ml15 " (click)="addAnotherItem()">Add another Item</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 mb10">
+            <p-checkbox binary="true" label="I want to ask other questions" (onChange)="onQuestionSelected()" [(ngModel)]="isQuestionChecked"></p-checkbox>
+
+            <!-- <i class="fa fa-asterisk" aria-hidden="true"></i> -->
+          </div>
+        </div>
+
+        <div class="row mb30" *ngIf="isQuestionChecked">
+          <div class="col-sm-12 mb10">
+            <label>What do you need to know?</label>
+            <!-- <i class="fa fa-asterisk" aria-hidden="true"></i> -->
+          </div>
+          <div class="col-sm-12" style="padding-left:0px" *ngFor="let question of requestQuotes.rfqQuestions; let index = index">
+            <div class="col-sm-8 col-xs-12 mb10">
+              <input type="text" maxlength="2000" [(ngModel)]="question.question" pInputText placeholder="">
+            </div>
+            <div class="col-sm-3 col-xs-10 mb10">
+              <p-dropdown placeholder="Type" filter="true" [(ngModel)]="question.inputTypeId" [options]="inputTypes"></p-dropdown>
+            </div>
+            <div class="col-sm-1 mb10 col-xs-2 icon-padding" (click)="deleteQuestion(index)" *ngIf="index > 0">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+
+          </div>
+          <div class="col-sm-12 mb10 " style="padding-left:0px">
+            <button class="btnYello ml15 " (click)="addAnotherQuestion()">Add another Question</button>
+          </div>
+        </div>
+</div>
+
+      <div class="col-sm-5 col-xs-12 mb30">
+        <app-invite-vendor [requestQuotes]="requestQuotes" [vendorList]="vendorList"></app-invite-vendor>
+      </div></div>
+
+    </div>
+    <div class="clearfix">
+      <div class="col-sm-offset-9">
+<button class="btnYello ml15 " (click)="genderateRFQ()" >Generate RFQ</button>
+      <button class="btnYello  pull-left" (click)="back()">Back To List</button></div>
+    </div>
+
+  </div>
+</div>
+<div class="confirmDialog">
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+</div>

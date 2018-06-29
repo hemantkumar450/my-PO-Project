@@ -1,0 +1,19 @@
+
+ 
+        <div class="custom">
+            <!-- <div class="user-image">
+                <img  src={{imageSource}}  style="height: 260px; width: 100%;" alt="" />
+            </div> -->
+            <div>
+                <ul>
+                    <li [class.active]="selectedIndex === i" *ngFor="let item of leftMenuItems; let i = index">
+                        <div (click)="onLeftMenuSelect(item , i)"> {{ item.name }}</div>
+                    </li>
+                </ul>
+            </div>
+
+ 
+        <!-- <div class="col-sm-10">
+            <router-outlet></router-outlet>
+        </div> -->
+    </div>

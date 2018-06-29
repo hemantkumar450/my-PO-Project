@@ -1,0 +1,41 @@
+<p-sidebar [(visible)]='showMessageInterval' position="top" [baseZIndex]="10000" styleClass="slide-height" >
+    
+    <h1 style="font-weight:normal;text-align: center;" [innerHTML]="msg"></h1>
+   
+  </p-sidebar>
+<header>
+  <div class="container pd0 containeroverflow">
+    <div class="row">
+      <div class="mb10 logoImg col-sm-2" >
+        <a (click)="onClickImage()">
+          <img [src]="baseImgPath+'logo.png'" style="cursor: pointer" (click)="onClickImage()">
+        </a>
+      </div>
+
+      <div class="col-sm-10">
+        <div class="row">
+          <app-nav-items *ngIf="isShowLogOut"></app-nav-items>
+        </div>
+
+        <div class="clearfix mt10">
+
+          <div class="mb10 col-sm-7 pd0 col-md-8">
+            <div>
+              <app-autocomplete *ngIf="isShowLogOut"></app-autocomplete>
+            </div>
+
+          </div>
+
+          <div class="col-sm-5 mb10 pd0 col-md-4 col-xs-12 smallLeftContent">
+
+            <app-cart *ngIf="isShowLogOut"> </app-cart>
+          </div>
+        </div>
+        <div class="pull-right vendorHeader" *ngIf="isHeaderShow">
+          <h1 style="margin-top: 20px;"> Vendor Registration</h1>
+          <button *ngIf="isLoginButtonShow === 0" class="btnYellow btnToBack mzz15 ml15 pull-right " (click)="backToLogin()">Back To Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

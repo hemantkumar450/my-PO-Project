@@ -1,0 +1,28 @@
+.productOrder /deep/.ui-calendar .ui-inputtext{
+    width: 100%;
+    height: 38px;
+    background-color: #ffffff;
+    border: 2px solid #d9d9d9;
+    color: #56555b;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none!important;
+    transition-property: border-color;
+    transition-duration: 1s;
+}
+.productOrder /deep/.ui-calendar{
+    display: block;
+}
+.productOrderSeg{
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    flex-grow: 1;
+    flex-flow: wrap;
+    position: relative;
+}
+
+.productOrder {
+    display: flex;
+    flex-flow: wrap;
+}

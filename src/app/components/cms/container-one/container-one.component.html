@@ -1,0 +1,145 @@
+<div class="row mt15 mb15">
+  <div class="col-sm-12">
+    <div class="clearfix flexdv">
+      <div class="col-sm-5 mt15 mb15 pd0" style="text-align: center;">
+        <button class="btnYellow" style="width:auto" (click)="onShowCatergories()" *ngIf="roleId!==2">
+          <span class="countId">Add Category</span>
+        </button>
+        <button class="btnYellow" (click)="onShowCatergories()" *ngIf="roleId === 2 
+        &&  
+        cmsPermission.canEdit === true" style="width:auto">
+          <span class="countId">Add Category</span>
+        </button>
+        <div class="col-sm-12 mt15 mb15 pd0" style="text-align: center;">
+          <!--                        show Attachment                             -->
+          <div class="col-sm-12 vendorDetail show-context">
+            <ng-template ngFor let-category [ngForOf]=" cmsDetail.categories " let-i="index">
+              <div class="col-sm-12 text-align-l chip-tab" *ngIf="category.isfinallySubmitted == true" [ngStyle]="{'background-color':i % 2 === 0 ?'#EDEDED':'white'}">
+                <div class="col-sm-10" style="padding-right:0px"> {{category.segmentName | truncate:20 }}</div>
+                <div class="col-sm-2">
+                  <i class="fa fa-close float-r" (click)="onPressDelete(category)" *ngIf="roleId!==2"></i>
+                  <i class="fa fa-close float-r" (click)="onPressDelete(category)" *ngIf="roleId === 2 
+                  && 
+                 
+                  cmsPermission.canEdit === true"></i>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+          <!--                        Attachment end                             -->
+        </div>
+      </div>
+      <div class="col-sm-2" style="position:relative">
+        <div class="seprator"></div>
+      </div>
+      <div class="col-sm-5 mt15 mb15 pd0">
+        <div class="form-group col-lg-11" style="padding-left: 13px">
+          <label class="control-label">Attachment</label>
+          <div class="smart-form">
+            <div class="input input-file" *ngIf="roleId!==2">
+
+              <span class="button">
+                <input class="btnYellow" [disabled]="isDisabled" id="file" name="file" type="file" #fileInput placeholder="Upload file..."
+                  (change)="onAttachmentSelect($event)" accept="image/*" multiple>Browse
+              </span>
+
+              <input placeholder="Include some files" readonly="" type="text">
+            </div>
+            <div class="input input-file" *ngIf="roleId === 2 
+            && 
+          
+            cmsPermission.canEdit === true">
+
+              <span class="button">
+                <input class="btnYellow" [disabled]="isDisabled" id="file" name="file" type="file" #fileInput placeholder="Upload file..."
+                  (change)="onAttachmentSelect($event)" accept="image/*" multiple>Browse
+              </span>
+
+              <input placeholder="Include some files" readonly="" type="text">
+            </div>
+          </div>
+
+
+          <!--                        show attachemnt list                             -->
+          <div class="show-context" *ngIf="cmsDetail.attachments && cmsDetail.attachments.length > 0 ">
+            <div *ngFor="let file of cmsDetail.attachments; let i = index;">
+              <div class="ui-fileupload-row col-lg-12 border-col" *ngIf="file.isDeleted === false" [ngStyle]="{'background-color':i % 2 === 0 ?'#EDEDED':'white'}">
+                <div class="col-md-10" style="padding-top:10px;padding-top:10px;">
+
+                  <div class="col-md-3" style="padding:0px">
+
+                    <img class="image-size" src="{{file.attachmentUrl}}" />
+
+                  </div>
+
+                  <div class="col-md-9" style="max-width: 100%">
+
+                    <a href="{{file.attachmentUrl}}" target="__blank" style="max-width: 100%;word-wrap: break-word;">{{file.attachmentName | truncate:20}}</a>
+                  </div>
+
+                </div>
+
+                <div class="col-md-2 m-t-10" style="    padding: 20px 0px 0px 0px;">
+                  <span class="ui-button-icon-left ui-c fa fa-fw fa-close remove-icon" style="cursor: pointer;" (click)="remove(file)" *ngIf="roleId!==2"></span>
+                  <span class="ui-button-icon-left ui-c fa fa-fw fa-close remove-icon" style="cursor: pointer;" (click)="remove(file)" *ngIf="roleId === 2 
+ 
+                  && 
+                  cmsPermission.canEdit === true"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--                        show attachment list end                            -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Category List" responsive="true" [autoAlign]="true" positionTop="0" [(visible)]="showContent" height="auto"
+  width="1000" [contentStyle]="{'max-height':'auto'}">
+
+  <div class="row mt15 mb15">
+    <div class="col-sm-12">
+      <div class="clearfix flexdv">
+        <div class="col-sm-5 mt15 mb15 pd0" style="text-align: center;">
+          <div class="mb15">
+            <input type="text" OnlyAlphaNumeric name="name" pInputText placeholder="Search Category Atleast Type 3 Charecters" (input)="onKeyPressCategorySearch()"
+              [(ngModel)]="filterText">
+
+          </div>
+          <div class="col-sm-12 vendorDetail contextContainer" infiniteScroll debounce [infiniteScrollDistance]="scrollDistance" (scrolled)="onScrollDown()"
+            [scrollWindow]="false">
+            <ng-template ngFor let-category [ngForOf]="categories ">
+              <div class="col-sm-12 text-align-l" (click)="onClickCategory(category)" [ngStyle]="{'background-color' : category.isChecked == true ? 'rgb(237, 237, 237)':null,'color' : category.isChecked == true ? 'black':null}">
+                {{category.segmentName }}
+              </div>
+            </ng-template>
+          </div>
+
+        </div>
+        <div class="col-sm-2" style="position:relative">
+          <div class="seprator"></div>
+        </div>
+
+
+        <div class="col-sm-5 mt15 mb15 pd0" style="text-align: center;">
+          <div class="col-sm-12 vendorDetail show-context">
+            <ng-template ngFor let-category [ngForOf]=" cmsDetail.categories " let-i="index">
+              <div class="col-sm-12 text-align-l chip-tab" *ngIf="category.isChecked == true" [ngStyle]="{'background-color':i % 2 === 0 ?'#EDEDED':'white'}">
+                <div class="col-sm-8"> {{category.segmentName | truncate:20}}</div>
+                <div class="col-sm-4">
+                  <i class="fa fa-close float-r" (click)="onCloseCategory(category)"></i>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-footer>
+    <button style="height: 30px;    margin-right: 15px;" (click)="showContent = false" class="btnYellow">Cancel</button>
+    <button style="height: 30px;" (click)="submitCategory()" class="btnYellow">Submit</button>
+  </p-footer>
+</p-dialog>

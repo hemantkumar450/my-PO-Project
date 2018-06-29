@@ -1,0 +1,21 @@
+<div class="pageTitle clearfix">
+    <div class="container pd0">
+      <div class="pull-left">
+      <h3 *ngIf="roleId === roleEnum.Admin || roleId === roleEnum.SubAdmin">Admin</h3>
+      <h3 *ngIf="roleId === roleEnum.PDU">User</h3>
+      <h3 *ngIf="roleId === roleEnum.Vendor">Vendor</h3>
+    </div>
+    <div class="pull-right mt15">  <app-left-menu></app-left-menu></div>
+  </div>
+  </div>
+  
+  <div class="container mt30">
+    <div class="row">
+
+    
+        <div class="col-sm-12">
+          <router-outlet></router-outlet>
+        </div>
+     
+    </div>
+  </div>

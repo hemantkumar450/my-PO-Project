@@ -1,0 +1,426 @@
+<div class="row  mb15 questionSec" style="padding: 0;">
+  <!-- questionSecHeader starts here -->
+
+
+  <!-- questionSecBody starts here -->
+  <div class="questionSecBody">
+
+
+    <div class="listedItems" [ngClass]="{'open': listedItemsState}">
+      <div class="clearfix">
+
+        <div class="col-sm-3 pd0">
+          <div class="h51  borderBottomGray" style="padding-top: 10px;">
+
+            <div class="noMargin">
+              <div class="col-sm-4">
+                <label>Sr No.</label>
+              </div>
+              <div class="col-sm-8">
+                <label>Questions</label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="clearfix">
+            <div class="borderBottomGray h65 col-sm-12 pd0" *ngFor="let rfq of rfqDetails.rfqQuestions; let index = index" [ngStyle]="{'background-color':rfq.isMouseClick == true ?'#e2d69f':''}"
+              (click)="onClickQuestion(index)">
+              <div class="col-sm-2">
+                <label>{{index + 1}}</label>
+              </div>
+              <div class="col-sm-10">
+
+                <label>{{rfq.question}}</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="clearfix">
+            <div class="borderBottomGray h65 col-sm-12 pd0">
+              <div class="col-sm-8">
+                <label>Line Items</label>
+
+              </div>
+              <div class="col-sm-4">
+                <button *ngIf="roleId === roleEnum.PDU && rfqDetails.statusId !== rfqStatusEnum.Completed" class="btnYellow pull-right" (click)="addNewCode(rfqDetails)">Add</button>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div style=" margin-bottom: 0;  border-top: none;  border-right: none;" class="questionSecBodyEl clearfix listedItemsHeader"
+            (click)="toggleListedItems($event)">
+
+            <div class="row">
+              <div class="col-sm-1">
+                <label>#</label>
+              </div>
+              <div class="col-sm-3" style="padding-left: 0px;">
+                <label>Items</label>
+              </div>
+              <div class="col-sm-3 pd0">
+                <label>UOM</label>
+              </div>
+              <div class="col-sm-2 pd0">
+                <label>Quantity</label>
+              </div>
+            </div>
+            <i class="fa fa-plus" *ngIf="rfqDetails.rfqItems.length > 0"></i>
+          </div>
+
+          <div class="clearfix" *ngIf="listedItemsState">
+            <div class="col-sm-12">
+              <div class="row borderBottomGray h65" *ngFor="let rfq of rfqDetails.rfqItems; let index = index" [ngStyle]="{'background-color':rfq.isMouseClick == true ?'#e2d69f':''}"
+                (click)="onClickRfqItemClick(index)">
+                <div class="col-sm-1">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <label>{{index + 1}}</label>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-3 pdh5" style="padding-left: 0px;">
+                  <label *ngIf="!rfq.isEdited">{{rfq.itemName}}</label>
+                  <input pInputText [(ngModel)]="rfq.itemName" maxlength="100" *ngIf="roleId === roleEnum.PDU && rfq.isEdited">
+                </div>
+                <div class="col-sm-3 pdh5">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <label *ngIf="!rfq.isEdited">{{rfq.uomName}}</label>
+                      <p-dropdown placeholder="Unit" filter="true" [(ngModel)]="rfq.uomId" [options]="unitOfMeasurement" *ngIf="roleId === roleEnum.PDU && rfq.isEdited"></p-dropdown>
+                      <!-- <input pInputText style="padding: 4px;" 
+                      [(ngModel)]="rfq.uomName" 
+                      *ngIf="roleId === roleEnum.PDU && rfq.isEdited"> -->
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-2 pdh5">
+                  <div class="row borderBottomGray h65" style="border-bottom: none">
+                    <div class="col-sm-12">
+                      <label *ngIf="!rfq.isEdited">{{rfq.quantity}}</label>
+                      <input pInputText style="padding: 4px;" maxlength="10" OnlyNumber="true" [(ngModel)]="rfq.quantity" *ngIf="roleId === roleEnum.PDU && rfq.isEdited">
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="col-sm-1 pdh5" *ngIf="roleId === roleEnum.PDU && rfqDetails.statusId !== rfqStatusEnum.Completed">
+                  <i class="fa fa-edit" pTooltip="Edit" style="font-size:20px;cursor: pointer" (click)="editLineItem(index)" *ngIf="!rfq.isEdited"></i>
+                  <i class="fa fa-save" pTooltip="Save" style="font-size:20px;cursor: pointer" *ngIf="rfq.isEdited" (click)="saveLineItem(rfq,index)"></i>
+                </div>
+                <div class="col-sm-1 pdh5" *ngIf="roleId === roleEnum.PDU && rfqDetails.statusId !== rfqStatusEnum.Completed">
+                  <i class="fa fa-trash" pTooltip="Delete" style="font-size:20px;cursor:pointer" (click)="deleteLineItem(rfq, index)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="clearfix  borderBottomGray" style="height: 100px; display: flex;
+            align-items: center;" (click)="onClickUploadCode($event)">
+
+            <div class="noMargin" style="width: 100%;">
+
+              <div class="col-sm-12">
+                <label>Uploaded Quotes</label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="clearfix h65  borderBottomGray">
+
+            <div class="noMargin" style="width: 100%;">
+              <div class="col-sm-12">
+                <label>Final Quote</label>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="clearfix" *ngIf="roleId !== roleEnum.Vendor">
+            <div class="borderBottomGray h65 col-sm-12 pd0">
+              <div class="col-sm-12">
+                <label>Shortlist</label>
+                <button style="width:auto ;margin-left: 10px" (click)="setNegotioanForVendor()" class="btnYellow" *ngIf="isSendForNegotiation 
+                && 
+                rfqDetails.statusId !== rfqStatusEnum.Completed
+                 && isShowNegotiation()" >Send For Negotiation</button>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="clearfix" *ngIf="roleId !== roleEnum.Vendor">
+            <div class="borderBottomGray h65 col-sm-12 pd0">
+              <div class="col-sm-12">
+                <label></label>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-9  content pd0">
+
+          <div class="box" *ngFor="let rfq of rfqDetails.rfqVendors; let index = index">
+            <div class="column multiVendorLineItemsHeader">
+              <label>{{rfq.vendorName}}</label>
+            </div>
+            <div class="column h65" *ngFor="let question of rfq.rfqQuestionResponses; let index = index" (click)="onClickQuestion(index)"
+              [ngStyle]="{'background-color':question.isMouseClick == true ?'#e2d69f':''}">
+              <div class="clearfix" style="width:100%">
+                <div>
+                  <div class="col-sm-8 pd0">
+                    <div class="clearfix" *ngIf="question.inputTypeId === questionTypeEnum.Text">
+
+                      <input style='margin-top: 10px;' pInputText placeholder="answer" maxlength="2000" [(ngModel)]="question.questionResponse" *ngIf="!isUpdateQuote && roleId === roleEnum.Vendor">
+                      <label *ngIf="isUpdateQuote  && roleId === roleEnum.Vendor">{{question.questionResponse}}</label>
+
+                      <label *ngIf="roleId === roleEnum.PDU">{{question.questionResponse}}</label>
+                    </div>
+                    <div class="clearfix" *ngIf="question.inputTypeId === questionTypeEnum.Attachment">
+                     
+                      <div class="uploadBtnAddon">
+                        <input style='margin-top: 10px' type="text" pInputText placeholder="Select a file" [disabled]="true" *ngIf="!isUpdateQuote && !question.attachmentId  && roleId === roleEnum.Vendor"
+                          [(ngModel)]="question.attachementNameDisplay">
+                        <a style="    height: 65px;
+                                            
+                        display: inline-block;
+                        line-height: 65px;"  target="_blank" href="{{question.attachmentUrl}}"
+                          *ngIf="question.attachmentId && question.attachementNameDisplay  && roleId === roleEnum.Vendor">
+                          <span *ngIf="!question.attachmentName"> {{question.attachementNameDisplay|truncate:20}}</span>
+                        </a>
+                        <a style="    height: 50px;
+                                            
+                        display: inline-block;
+                        line-height: 50px;"  target="_blank" href="{{question.attachmentUrl}}"
+                          *ngIf="question.attachmentId && !question.attachementNameDisplay  && roleId === roleEnum.Vendor && question.attachmentName">
+                          <span *ngIf="question.attachmentName">{{question.attachmentName|truncate:20}}</span>
+                        </a>
+                        <a style="    height: 50px;
+                                            
+                                                  display: inline-block;
+                                                  line-height: 50px;" target="_blank" href="{{question.attachmentUrl}}"
+                          *ngIf="roleId === roleEnum.PDU && question.attachmentName">
+                          <span>{{question.attachmentName|truncate:20}}</span>
+                        </a>
+                        <span class="ui-inputgroup-addon " *ngIf="!isUpdateQuote  && roleId === roleEnum.Vendor">
+                          <input #file class="productUpload mt10" type="file" (change)="upload($event, question,'question')" />
+                          <!-- (change)="upload($event.target.files , 'OrganisationChart')" -->
+                          <button class="browseBtn mt10">Browse</button>
+                        </span>
+                      </div>
+                      <!-- <div class="col-sm-4 pd0">
+                        <button class="btnYellow" (click)="submitAnswer(question)" *ngIf="!isUpdateQuote  && roleId === roleEnum.PDU && rfqDetails.statusId !== rfqStatusEnum.Completed">Submit Answer</button>
+                      </div> -->
+                    </div>
+                    <div class="clearfix mt10" *ngIf="question.inputTypeId === questionTypeEnum.Yes_No ">
+                      <div class="col-sm-4 col-xs-4" *ngIf="!isUpdateQuote  && roleId===roleEnum.Vendor">
+                        <p-radioButton label="Yes" name="groupname" value="Yes" [(ngModel)]="question.questionResponse"></p-radioButton>
+                      </div>
+                      <div class="col-sm-4 col-xs-4" *ngIf="!isUpdateQuote  && roleId===roleEnum.Vendor">
+                        <p-radioButton label="No" name="groupname" value="No" [(ngModel)]="question.questionResponse"></p-radioButton>
+                      </div>
+                      <div class="col-sm-4 col-xs-4" *ngIf="isUpdateQuote  && roleId===roleEnum.Vendor">
+                        {{question.questionResponse}}
+                      </div>
+                      <div class="col-sm-4 col-xs-4" *ngIf="roleId===roleEnum.PDU">
+                        {{question.questionResponse}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <button class="btnYellow ml15 mt10" (click)="submitAnswer(question)" *ngIf="!isUpdateQuote && roleId === roleEnum.Vendor && rfqDetails.statusId !== rfqStatusEnum.Completed">Submit Answer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix">
+              <div class="col-sm-12 h65" style="    border-top: 1px solid #ccc;">
+                <div class="row" style="width:100%">
+
+                  <!-- <button *ngIf="roleId === roleEnum.Vendor" class="btnYellow ml15  pull-right" (click)="addQuotes()">Add Quote</button> -->
+                  <button *ngIf="roleId === roleEnum.Vendor && rfqDetails.statusId !== rfqStatusEnum.Completed && rfq.rfqVendorQuotes.length > 0" style="width:auto" class="btnYellow ml15  pull-right"
+                    (click)="updateQuote()">
+                    <span *ngIf="isUpdateQuote ">Update price </span>
+                    <span *ngIf="!isUpdateQuote ">Submit Quotes</span>
+                  </button>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix">
+              <div class="col-sm-12" style="padding-left: 0px; padding-right: 0px">
+                <div class="clearfix">
+
+
+                  <div class="col-sm-12">
+                    <div style="margin-bottom: 0; border-left:none;border-right:none" class="questionSecBodyEl clearfix listedItemsHeader" (click)="toggleListedItems($event)">
+                      <label>Price</label>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="listedItemsState" class="clearfix">
+              <div class="column" style="background: none; margin-top: -12px">
+                <div class="col-sm-12" style="padding-left: 5px; padding-right: 5px">
+                  <div class="clearfix">
+                    <div class="row borderBottomGray h65" *ngFor="let rip of rfq.rfqItemPrices; let index = index" (click)="onClickRfqItemClick(index)"
+                      [ngStyle]="{'background-color':rip.isMouseClick == true ?'#e2d69f':''}">
+                      <div class="col-sm-12" style="padding-left: 5px; padding-right: 5px">
+                        <input style="width: 120px;text-align: right" pInputText placeholder="" maxlength="16" [(ngModel)]="rip.totalPrice" OnlyDecimalNumber="true" *ngIf="roleId === roleEnum.Vendor && rfqDetails.statusId !== rfqStatusEnum.Completed">
+                        <label *ngIf="roleId === roleEnum.PDU || rfqDetails.statusId === rfqStatusEnum.Completed">{{rip.totalPrice | number : '1.2-2'}}</label>
+                        <strong> AED</strong>
+                        <button class="btnYellow ml15" style="width:auto" (click)="addQuotes()" *ngIf="roleId === roleEnum.Vendor && rip.isVendorItem && rfqDetails.statusId !== rfqStatusEnum.Completed">Save</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix" style="height: 99px; display: flex;
+     align-items: center;overflow: hidden;overflow-y: auto">
+              <div class="clearfix " #uploadQuote style="width:100%">
+                <div class="col-sm-12" style="padding: 10px">
+                  <div class="clearfix col-sm-12" *ngFor="let vqs of rfq.rfqVendorQuotes;let index=index">
+                    <div class="col-sm-4" *ngIf="index !==  rfq.rfqVendorQuotes.length - 1" [ngStyle]="{'color':index ===  rfq.rfqVendorQuotes.length - 1 ?'green':'red'}">
+                      {{vqs.currencyCode}}
+                      <span *ngIf="vqs.price">{{vqs.price | number : '1.2-2'| truncate:20}}</span>
+                    </div>
+                    <div class="col-sm-8" *ngIf="index !==  rfq.rfqVendorQuotes.length - 1">
+                      <span *ngIf="vqs.attachmentName">
+                        <a target="_blank" href="{{vqs.attachmentUrl}}">{{vqs.attachmentName | truncate:12}}</a>
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix" style="width:100%">
+              <div class="borderBottomGray h65 col-sm-12 pd0" style="border-top: 1px solid #ccc; border-bottom: none">
+                <div class="col-sm-12"  style="padding: 10px">
+                  <div class="clearfix col-sm-12 pd0" *ngFor="let vqs of rfq.rfqVendorQuotes;let index=index">
+                    <div class="col-sm-12" *ngIf="index ===  rfq.rfqVendorQuotes.length - 1" [ngStyle]="{'color':index ===  rfq.rfqVendorQuotes.length - 1 ?'green':'red'}">
+                      {{vqs.currencyCode}}
+                      <span *ngIf="vqs.price">{{vqs.price | number : '1.2-2' | truncate:20}}</span>
+                    </div>
+                    <div class="col-sm-12" *ngIf="index ===  rfq.rfqVendorQuotes.length - 1">
+                      <span *ngIf="vqs.attachmentName">
+                        <a target="_blank" href="{{vqs.attachmentUrl}}">{{vqs.attachmentName | truncate:12}}</a>
+                      </span>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="col-sm-5" *ngIf="roleId === roleEnum.Vendor && rfqDetails.statusId !== rfqStatusEnum.Completed">
+                  <div class="ml15">
+                    <button style="width: auto" class="btnYellow col-sm-offset-4" (click)="addQuotes()">Add Quote</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="clearfix column" *ngIf="roleId !== roleEnum.Vendor">
+              <div class="clearfix" #uploadQuote>
+                <div class="col-sm-12">
+                  <p-checkbox binary="true" [(ngModel)]="rfq.sendForNegotiation" [disabled]="!isSendForNegotiation || !rfq.isQuoteSubmitted"></p-checkbox>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix column" *ngIf="roleId !== roleEnum.Vendor">
+              <div class="clearfix" #uploadQuote>
+                <div class="col-sm-12">
+                  <button style="width: auto" class="btnYellow" (click)="generateQuotes(rfq)" *ngIf="rfq.genarateLabel && !rfq.purchaseOrderId && rfq.isQuoteSubmitted">
+                    <span>Generate {{rfq.genarateLabel}}</span>
+                  </button>
+                  <span *ngIf="rfq.genarateLabel && rfq.purchaseOrderId">{{rfq.genarateLabel}} generated</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="listedItemsContainer" *ngIf="roleId === roleEnum.Vendor">
+
+          <div class="questionSecBodyEl clearfix">
+
+            <div class="col-sm-12">
+              <div class="ml15">
+                <button style="width: auto" class="btnYellow col-sm-offset-10" (click)="updateQuote()">
+                  <span *ngIf="isUpdateQuote">Update price </span>
+                  <span *ngIf="!isUpdateQuote">Submit addQuotes</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <p-dialog [(visible)]="addQuotesDisplay" header="Add Quotes">
+          <div class="col-sm-12">
+
+
+
+            <div class="col-sm-12" style="margin-bottom: 10px">
+              <div class="col-sm-2">
+                <strong> AED</strong>
+              </div>
+              <div class="col-sm-7">
+                <input pInputText placeholder="" maxlength="15" [(ngModel)]="rfqvendorQuotes.price" OnlyDecimalNumber="true">
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="col-sm-2">
+                <strong>File </strong>
+              </div>
+              <div class="col-sm-7">
+                <div class="uploadBtnAddon">
+                  <input type="text" pInputText placeholder="Select a file" [disabled]="true" *ngIf="!rfqvendorQuotes.attachmentId">
+                  <a style="    height: 50px;
+                          
+                  display: flex;
+                  align-items: center;" target="_blank" href="{{rfqvendorQuotes.attachmentUrl}}" *ngIf="rfqvendorQuotes.attachmentId">
+                    <span *ngIf="rfqvendorQuotes.attachementNameDisplay"> {{rfqvendorQuotes.attachementNameDisplay |truncate:20}}</span>
+                  </a>
+                  <span class="ui-inputgroup-addon ">
+                    <input #file1 class="productUpload" type="file" (change)="upload(this, rfqvendorQuotes,'addQuotes')" />
+                    <!-- (change)="upload($event.target.files , 'OrganisationChart')" -->
+
+                    <button class="browseBtn">Browse</button>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+
+          </div>
+          <p-footer>
+            <button style="height: 30px;    margin-right: 15px;" (click)="addQuotesDisplay = false" class="btnYellow">Cancel</button>
+            <button style="height: 30px;" (click)="submitRfqQutoes()" class="btnYellow">Submit</button>
+          </p-footer>
+        </p-dialog>
+        <div class="confirmDialog">
+          <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"></p-confirmDialog>
+        </div>
+        <!-- </div> -->
+
+        <!-- </div> -->

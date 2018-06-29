@@ -1,0 +1,242 @@
+<div class="clearfix">
+  <div class="pull-left" style="margin-top: 5px">
+    <h3 style="margin: 0" *ngIf="!isProductModeOn && !isVendorEditModeOn">Vendor Product Add</h3>
+    <h3 style="margin: 0" *ngIf="!isProductModeOn && isVendorEditModeOn">Vendor Product Edit</h3>
+    <h3 style="margin: 0" *ngIf="isProductModeOn && !isProductEditModeOn">Product Add</h3>
+    <h3 style="margin: 0" *ngIf="isProductModeOn && isProductEditModeOn">Product Edit</h3>
+  </div>
+</div>
+<div class="addProductWrapper">
+  <div class="addProductContent">
+
+    <div *ngIf="products.length>0">
+      <div class="row mb15">
+        <div class="col-sm-4 col-md-3 text-right">Segment
+        </div>
+        <div class="col-sm-8 col-md-9">
+          {{productModel.segmentName}}
+        </div>
+      </div>
+
+      <div class="row mb15">
+        <div class="col-sm-4 col-md-3 text-right">Family
+        </div>
+        <div class="col-sm-8 col-md-9">
+          {{productModel.familyName}}
+        </div>
+      </div>
+
+      <div class="row mb15">
+        <div class="col-sm-4 col-md-3 text-right">Class
+        </div>
+        <div class="col-sm-8 col-md-9">
+          {{productModel.className}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb15">
+      <div class="col-sm-4 col-md-3  text-right">Commodity
+        <i *ngIf="!isAdmin && !isVendorEditModeOn" class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9" *ngIf="!isAdmin && productModel.id ===0 || isProductAddModeOn">
+        <app-auto-complete [componentName]='componentName' (searchTextEvent)="getSearchTextEvent($event)"></app-auto-complete>
+      </div>
+      <div class="col-sm-8 col-md-9" *ngIf="isProductEditModeOn || isAdmin && !isProductAddModeOn || productModel.id !==0">
+        {{productModel.commodityName}}
+      </div>
+    </div>
+
+    <div class="row mb15" *ngIf="productModel.commodityId >0 && !isVendorAddProductModeOn">
+      <div class="col-sm-4 col-md-3 text-right">Product
+        <i *ngIf="!isAdmin && !isVendorEditModeOn || isProductModeOn " class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-4 col-md-6" *ngIf="isVendorModeOn && !isAdmin">
+        <p-dropdown placeholder="Select a Product" [options]="products" [disabled]="isAdmin || productModel.id !==0" [(ngModel)]="productModel.productId"
+          filter="true" (onChange)="populateProductProperties()"></p-dropdown>
+      </div>
+      <div class="col-sm-4 col-md-3" *ngIf="!isAdmin && !isVendorEditModeOn">
+        <button class="addProductButton" (click)="vendorAddProductEvent()">+</button>
+      </div>
+      <div class="col-sm-8 col-md-9" *ngIf="isProductAddModeOn || isProductEditModeOn">
+        <input type="text" maxlength="100" OnlyAlphaNumeric="true" [(ngModel)]="productModel.productName" pInputText placeholder="Product Name">
+      </div>
+      <div *ngIf="isAdmin && !isProductAddModeOn && !isProductEditModeOn" class="col-sm-8 col-md-9">
+        {{productModel.productName}}
+      </div>
+    </div>
+
+    <div class="row mb15" *ngIf="isVendorAddProductModeOn">
+      <div class="col-sm-4 col-md-3  text-right">New Product Name
+        <i *ngIf="!isAdmin" class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <input type="text" maxlength="100" trim="blur" OnlyAlphaNumeric="true" [(ngModel)]="productModel.productName" pInputText
+          placeholder="Product Name">
+      </div>
+    </div>
+
+    <div class="row mb15" *ngIf="productModel.commodityId >0 && (isProductAddModeOn || isProductEditModeOn || isVendorAddProductModeOn) ">
+      <div class="col-sm-4 col-md-3  text-right">Product Code
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <input type="text" OnlyAlphaNumeric="true" trim="blur" maxlength="100" [(ngModel)]="productModel.productCode" pInputText
+          placeholder="Product Code">
+      </div>
+    </div>
+
+    <div class="row mb15">
+      <div class="col-sm-4 col-md-3 text-right">Description
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <textarea OnlyAlphaNumericDot trim="blur" [(ngModel)]="productModel.productDesc" maxlength="500" [disabled]="isAdmin && !isProductAddModeOn 
+        && !isProductEditModeOn || productModel.id !==0 
+        && !isProductAddModeOn && !isProductEditModeOn && !isVendorModeOn"></textarea>
+      </div>
+    </div>
+
+    <div class="row mb15" *ngIf="!isProductModeOn">
+      <div class="col-sm-4 col-md-3 text-right">Price
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <input type="text" OnlyDecimalNumber maxlength="10" trim="blur" [(ngModel)]="productModel.productPrice" pInputText placeholder="Price in numbers"
+          [disabled]="isAdmin || productModel.id !==0 && !isVendorModeOn" (blur)="decimalCheckEvent()">
+      </div>
+    </div>
+
+    <div class="row mb15">
+      <div class="col-sm-4 col-md-3 text-right">UOM
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9">
+        <p-dropdown placeholder="Select a UOM" [options]="UOMList" [disabled]="isAdmin && !isProductAddModeOn && !isProductEditModeOn"
+          [(ngModel)]="productModel.uomId" filter="true"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="row mb15">
+      <div class="col-sm-4 col-md-3 text-right">Add Image </div>
+      <div class="col-sm-8 col-md-9">
+
+        <div class="row">
+
+          <div class="col-sm-3 col-md-2" *ngIf="!isAdmin && productModel.id ===0 || isProductAddModeOn || isProductEditModeOn || !isAdmin && isVendorModeOn">
+            <span class="uploadFile">
+              <i class="fa fa-plus"></i>
+              <input #file class="productUpload" type="file" multiple accept="image/*" (change)="upload(file.files)" />
+            </span>
+          </div>
+
+          <div *ngFor="let image of productModel.productAttachments;let index=index">
+            <div class="col-sm-3 col-xs-4 mt15 col-md-3 pd0 mb15" *ngIf="!image.isDeleted">
+              <img class="uploadFile" [src]="image.attachmentUrl" style="float: left; border: none; margin-left: 10px;" />
+              <i style="    cursor: pointer;
+              width: 15px;
+              height: 15px;
+              display: inline-block;
+              background: #fdd933;
+              border-radius: 50%;
+              text-align: center;
+              top: -8px;
+              position: relative;" class="fa fa-remove" *ngIf="!isAdmin && productModel.id ===0 && image.isVendorAttachment
+              || isProductAddModeOn 
+              || isProductEditModeOn 
+              || !isAdmin && isVendorModeOn && image.isVendorAttachment" (click)="deleteImage(image,index)"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="row mb15" *ngIf="productModel.productProperties.length !==0 || isProductAddModeOn 
+    || isProductEditModeOn || isVendorModeOn && !isAdmin && productModel.commodityId >0">
+
+      <div class="col-sm-4 col-md-3 text-right">
+        Product Properties </div>
+      <div class="col-sm-6 col-md-8">
+        <div class="row">
+          <div class="col-sm-4 col-md-4 mb15">
+            <b>Property Key</b>
+          </div>
+          <div class="col-sm-4 col-md-4  mb15 col-xs-10">
+            <b>Property Value</b>
+          </div>
+          <div class="col-sm-4 col-md-4  mb15 col-xs-2" *ngIf="(isVendorModeOn && !isAdmin) || (!isVendorModeOn && isAdmin)">
+            <button class="addButton" (click)="addNewProperties()">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix mb15">
+        <p-scrollPanel class="customHeightScroll" [style]="{width: '100%', maxHeight: '110px'}" *ngIf="!isAdmin && !isProductEditModeOn || isAdmin && isVendorModeOn">
+          <div *ngFor="let row of productModel.productProperties;let index=index">
+            <div *ngIf="row.id !== 0 && !row.isVendorProperty || row.id !== 0 && isAdmin">
+              <div class="col-sm-4 col-md-3 text-right"> </div>
+              <div class="col-sm-8 col-md-8">
+                <div class="row">
+                  <div class="col-sm-4 col-md-4 mb15"> {{row.propertyKey}} </div>
+                  <div class="col-sm-4 col-md-4 mb15"> {{row.propertyValue}} </div>
+                  <div class="col-sm-4 col-md-4 mb15"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-scrollPanel>
+      </div>
+      <div class="clearfix" *ngFor="let row of productModel.productProperties;let index=index">
+        <div *ngIf="row.id === 0 && !row.isDeleted || isAdmin && isProductEditModeOn && !row.isDeleted ||
+         row.id !== 0 && row.isVendorProperty && !isAdmin && !row.isDeleted">
+          <div class="col-sm-4 col-md-3 text-right"> </div>
+          <div class="col-sm-8 col-md-8">
+            <div class="row">
+              <div class="col-sm-4 col-xs-10 col-md-4 mb15">
+                <input type="text" maxlength="200" OnlyAlphaNumeric="true" [(ngModel)]="row.propertyKey" pInputText placeholder="Property Key"> </div>
+              <div class="col-sm-4 col-xs-2 col-md-4 mb15">
+                <button class="cancelButton" (click)="addDeleteProperties(row,index)">x</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb15" *ngIf="isAdmin && !isProductAddModeOn && !isProductEditModeOn">
+      <div class="col-sm-4 col-md-3 text-right">Status
+        <i class="fa fa-asterisk"></i>
+      </div>
+      <div class="col-sm-8 col-md-9 statusSuggestion">
+        <p-dropdown placeholder="choose Status" [options]="statusList" [(ngModel)]="productModel.vendorProductStatusId" filter="true"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="row mb15">
+      <div class="col-sm-4 col-md-3 text-right"></div>
+      <div class="col-sm-8 col-md-9" *ngIf="!isAdmin && productModel.id ===0 || isProductAddModeOn || isProductEditModeOn || !isAdmin && isVendorModeOn">
+        <button class="btnYellow" (click)="productLinkByVendor()">Submit</button>
+      </div>
+      <div class="col-sm-8 col-md-9" *ngIf="isAdmin && !isProductAddModeOn && !isProductEditModeOn">
+        <button class="btnYellow" style="width: 150px" (click)="displayReviewEvent()">Change Status</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<p-dialog header="Remark Dialog" [(visible)]="displayReviewDialog" [width]="300" [height]="300">
+
+  <div class="row mb15">
+    <div class="col-sm-8 col-md-9">
+      <textarea maxlength="500" [(ngModel)]="productModel.remarks" placeholder="Remarks"></textarea>
+    </div>
+  </div>
+
+  <p-footer>
+    <button type="button" pButton icon="fa-check" (click)="changeStatus()" label="Save"></button>
+    <button type="button" pButton icon="fa-close" (click)="displayReviewEvent()" label="No"></button>
+  </p-footer>
+
+</p-dialog>

@@ -1,0 +1,48 @@
+<div class=" padding-b-1">
+  <div class="cartCaontainer">
+    <div class="col-md-12" style="padding-right:0px">
+      <div class="col-md-8">
+        <h3>{{cmsDetail.name}}</h3>
+      </div>
+      <div class="col-md-4" style="padding-right:0px">
+          <h3 style="float:right">
+              <button  (click)="back()" style="    height: 36px;margin-right: 10px;" class="btnYellow">Back To List</button>
+              <button  (click)="submitCategory()" style="    height: 36px;" *ngIf="roleId!==2" class="btnYellow">Save</button>
+            <button  (click)="submitCategory()" style="    height: 36px;"  class="btnYellow" *ngIf="roleId === 2 
+            && 
+            
+            cmsPermission.canEdit === true">Save</button></h3>
+      </div>
+    </div>
+    <div class="col-sm-12 vendorDetail" style="border: 1px solid #ccc">
+      <h3></h3>
+
+      <div class="col-sm-3">Caption Name
+        <i class="fa "></i>
+      </div>
+      <div class="col-sm-9">
+        <div class="mb15">
+          <input type="text" trim="blur" OnlyAlphaNumeric name="name" pInputText [(ngModel)]="cmsDetail.captionName" *ngIf="roleId!==2">
+          <label  *ngIf="roleId === 2 
+          && 
+          cmsPermission.canView === true 
+          && 
+          cmsPermission.canEdit === false">{{cmsDetail.captionName}}</label>
+          <input type="text" OnlyAlphaNumeric name="name" pInputText [(ngModel)]="cmsDetail.captionName" *ngIf="roleId === 2 
+          
+          && 
+          cmsPermission.canEdit === true">
+          
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <app-container-one *ngIf='this.cmsDetail.id === 1' [roleId]="roleId" [cmsPermission] = "cmsPermission" [cmsDetail]="cmsDetail"></app-container-one>
+         <app-container-two *ngIf='this.cmsDetail.id === 2' [roleId]="roleId" [cmsPermission] = "cmsPermission"   [cmsDetail]="cmsDetail"></app-container-two>
+         <app-container-two *ngIf='this.cmsDetail.id === 3' [roleId]="roleId" [cmsPermission] = "cmsPermission"   [cmsDetail]="cmsDetail"></app-container-two>
+         <app-container-four *ngIf='this.cmsDetail.id === 4' [roleId]="roleId" [cmsPermission] = "cmsPermission"   [cmsDetail]="cmsDetail"></app-container-four>
+         <!--   <app-container-three></app-container-three>
+            <app-container-four></app-container-four>   -->
+      </div>
+    </div>
+  </div>
+</div>

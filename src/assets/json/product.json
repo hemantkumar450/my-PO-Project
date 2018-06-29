@@ -1,0 +1,20 @@
+{
+  "data": {
+    "header": [
+      {"field": "AttachmentName"  , "header":"AttachmentName" },
+      {"field":"ProductName" , "header":"ProductName"},
+      {"field":"ProductDesc" , "header":"ProductDesc"},
+      {"field":"CommodityCode","header":"CommodityCode"},
+      {"field":"Specification","header":"Specification"}
+    ],
+    "data": [{
+        "AttachmentName": "1",
+        "ProductName":"abc",
+        "ProductDesc":"xyz",
+        "CommodityCode":"123",
+        "Specification":"pqr"
+      }
+    
+    ]
+  }
+}

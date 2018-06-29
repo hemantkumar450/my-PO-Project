@@ -1,0 +1,60 @@
+h3{
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.compareWrapper{
+margin-bottom: 50px;
+}
+ tr th{
+    background: none;
+   padding: 8px 15px!important;
+}
+ tr > td {
+    padding: 8px 15px;
+}
+ tr th img{
+    max-width: 100%;
+    height: auto;
+}
+
+.subBadge{
+    background: #fdd933;
+    cursor: pointer;
+    line-height: 17px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 10px;
+    display: inline-block;
+    width: 18px;
+    float: right;
+}
+.productPropertiesDes{
+    border: 1px solid #ddd;
+   margin-left: 1%;
+}
+.productPropertiesDes:first-child{
+    margin-left: 0;
+}
+.productPropertiesDesWrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+.productPropertiesDes  /deep/.ui-scrollpanel{
+    border: none;
+}
+.productPropertiesDes  th,.productPropertiesDes /deep/.ui-scrollpanel-wrapper{
+    border-right: 1px solid #ddd;
+}
+
+
+@media only screen and (max-width: 1002px) {
+    .productPropertiesDes{
+    width: 47%!important;
+    margin-bottom: 30px;
+    }}
+    @media only screen and (max-width: 640px) {
+        .productPropertiesDes{
+        width: 100%!important;
+        }}  
